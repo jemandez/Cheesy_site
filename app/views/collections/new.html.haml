@@ -1,0 +1,9 @@
+= form_for @collection, action: 'create' do |f|
+  .form_field
+    %label{for: 'collection_title'} Nombra la collección
+    = f.text_field :title
+  .form_field
+    %label{for: 'collection_description'} Cuentanos que se muestra en esta colleción
+    = f.text_area :description
+
+  = f.submit 'Crear colleción'
