@@ -1,8 +1,11 @@
 = form_for @photo, action: "create" do |f|
   .form_field
-    %label{for: 'title'} Nombre de la fotografia
+    %label{for: 'photo[title]'} Nombre de la fotografia
     = f.text_field :title
   .form_field
-    %label{for: 'description'} Descripción de la fotografia
+    %label{for: 'photo[description]'} Descripción de la fotografia
     = f.text_area :description
+  .form_field
+    %label{for: 'photo[url]'} Url de la imagen
+    = f.text_field :url
   = f.submit "Crear"

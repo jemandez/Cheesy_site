@@ -1,4 +1,5 @@
 - @photos.each do |photo|
   .photo
+    = image_tag photo.url, alt: photo.title
     %h2.title #{photo.title}
     %p.description #{photo.description}
