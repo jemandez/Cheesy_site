@@ -1,0 +1,35 @@
+.one-page {
+    @include span-columns(12);
+
+    &__branding {
+        @include branding;
+    }
+
+    &__menu {
+        @include menu;
+    }
+
+    &__big-picture {
+        display: block;
+        margin-top: 3vw;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+
+        @include media(min-width 320px max-width 480px) {
+            width: 90%;
+        }
+        &__picture {
+            position: absolute;
+            z-index: 1;
+            background-size: cover;
+            display: block;
+            width: 100%;
+
+            &.active {
+                z-index: 3;
+            }
+        }
+    }
+}

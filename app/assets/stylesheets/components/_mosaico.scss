@@ -1,0 +1,50 @@
+.mosaicos {
+    @include outer-container;
+    @include row;
+    @include fill-parent;
+
+    &__title {
+        padding-top: 30px;
+        font-size: 2em;
+        font-family: futura;
+        font-weigth: bold;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+    
+
+    .mosaico {
+        @include span-columns(4);
+        max-height: 236px;
+        overflow: hidden;
+        margin-bottom: 28px;
+
+        @include media(min-width 320px max-width 480px) {
+            @include span-columns(6);
+            margin-bottom: 8px;
+            &:nth-child(odd) {
+                margin-right: 0px;
+            }
+        }
+
+
+
+        @include media(min-width 1024px) {
+            &.no-left {
+                margin-right: 0px;
+            }
+        }
+
+        &__picture {
+            img {
+                @include fill-parent;
+            }
+        &:hover {
+    -webkit-filter: opacity(30%); /* Chrome, Safari, Opera */
+    filter: opacity(30%);
+        }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+@sass main.scss
+@title Ejemplo de One Page
+
+# Generador de branding
+
+Se compone de titulo y subtitulo.
+
+Estos se ubican en el contenedor `one-page`. Ademas tiene una propiedad para especificar un lugar
+a donde se desea redigirir cuando reciva un click.
+
+
+```
+@haml 
+.one-page
+    .one-page__branding
+        %a.no-link{:href => "/"}
+            .one-page__branding__title Gordián
+            .one-page__branding__sub-title Memories that last
+
+@css {
+  .one-page {
+     float: none;
+   }
+}
+```
+
+Esto no compone una estructura estricta, esto se puede personalizar gracias al mixin `branding`
+
+``` plain
+.one-page {
+    &__branding {
+        @include branding;
+    }
+}
+
+```
+
+
+ 

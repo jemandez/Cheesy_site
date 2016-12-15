@@ -1,0 +1,18 @@
+- pages = %w(portafolio eventos paquetes conoceme contacto)
+
+
+.one-page__branding
+  %a.no-link{href:"/"}
+    .one-page__branding__title Gordián
+    .one-page__branding__sub-title Memories that last
+
+%button.c-hamburger.c-hamburger--rot
+  .span toggle menu
+
+.one-page__menu
+  - pages.each do |page|
+    - status = ""
+    - if page.downcase == action_name.downcase
+      - status = "active"
+
+    %a{class: "one-page__menu__item #{status}", href: "/#{page.downcase}"} #{page.capitalize}

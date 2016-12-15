@@ -1,0 +1,100 @@
+.contact {
+    @include row;
+    font-family: "futura";
+    
+    &__info {
+        @include shift(1);
+        @include span-columns(5);
+        padding-top: 5vw;
+        text-align: center;
+    }
+
+    &__form {
+        @include span-columns(5);
+        padding-top: 2vw;
+
+        &__direct-message {
+            font-weight: bold;
+            letter-spacing: 2px;
+
+        }
+
+        &__name, &__email, &__message {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+    }
+
+    .submit {
+        display: block;
+        clear: both;
+        background-color: #F0F0F0;
+        padding: 10px 15px 10px 20px;
+        border: 1px #C0C0C0 solid;
+        font-weight: bold;
+        float: right;
+        &__icon:after {
+            display: inline-block;
+            content: ' ';
+            background-image: url("/static/img/60525.svg");
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            vertical-align: middle;
+            height: 20px;
+            width: 20px;
+            margin-left: 10px;
+        }
+    }
+}
+
+.info {
+    &__direction, &__telephone, &__mail, &__social_networks {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    &__label {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    &__text {
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+}
+
+
+.form {
+    @include span-columns(12);
+
+    &__label {
+        display: block;
+        margin-bottom: 10px;
+        clear: both;
+    }
+
+    &__input {
+        &--password, &--textarea, &--text {
+            @include span-columns(8);
+            display: block;
+            border: 1px #F0F0F0 solid;
+            padding: .5em;
+            box-sizing: border-box;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        &--textarea {
+            @include span-columns(12);
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            resize: none;
+            height: 130px;
+            padding: 5px;
+        }
+    }
+}
