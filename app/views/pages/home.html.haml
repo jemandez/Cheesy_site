@@ -1,0 +1,42 @@
+
+#big-picture.one-page__big-picture
+  = image_tag('one-page/1.png', class: 'one-page__big-picture__picture active')
+
+:javascript
+  window.onload = function () {
+    var pages = #{ (2..9).map do |step|
+      image_path("one-page/#{step}.png")
+    end
+    };
+
+    pages.forEach(function (item, index) {
+      var image_element = $("<img />");
+      image_element.addClass("one-page__big-picture__picture");
+      var image = new Image()
+      image.onload = function() {
+        image_element.attr("src", this.src);
+        $('.one-page__big-picture').append(image_element);
+      }
+
+      image.src = item;
+    });
+
+
+    function changePicture() {
+      var $active, $next;
+      $active = $('#big-picture .active');
+      $next = $active.next().length > 0 ? $active.next() : $('#big-picture img:first');
+      $next.css('z-index', 2);
+      return $active.fadeOut(1500, function() {
+        $active.css('z-index', 1).show().removeClass('active');
+        return $next.css('z-index', 3).addClass('active');
+      });
+    };
+
+    window.setInterval(changePicture, 4000);
+
+    //changePicture();
+
+  };
+
+
