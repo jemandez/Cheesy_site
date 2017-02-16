@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :collections
-  resources :photos
+  resources :collections, path: 'portafolio' do
+    resources :photos
+  end
 
   get '/paquetes', to: "pages#paquetes"
   get '/conoceme', to: "pages#conoceme"

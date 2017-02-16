@@ -17,4 +17,12 @@ class CollectionsController < ApplicationController
       render action: 'new'
     end
   end
+
+  def show
+    @collection = Collection.find params[:id]
+  end
+
+  def edit
+    @collection = Collection.find params[:id]
+  end
 end

@@ -1,4 +1,7 @@
-.collections
-- @collections.each do |collection|
-  .collection
-    %h2= collection.title
+.mosaicos
+    %h2.mosaicos__title Portafolio
+    - @collections.each do |collection|
+        .mosaico
+            = link_to(collection) do
+                .mosaico__picture
+                    = image_tag(collection.photos.last.url, alt: collection.photos.first.title)

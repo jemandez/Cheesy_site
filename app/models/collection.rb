@@ -1,5 +1,5 @@
 class Collection < ApplicationRecord
-  serialize :photos, Array
+  has_many :photos
 
   validates :title, presence: true
   validates :description, presence: true

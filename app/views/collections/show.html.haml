@@ -1,0 +1,6 @@
+.grid-image
+    %h2.grid-image__title= @collection.title
+
+    - @collection.photos.each do |photo|
+        .grid-image__container
+            = image_tag(photo.url, class: "grid-image__container__picture",  alt: photo.title)

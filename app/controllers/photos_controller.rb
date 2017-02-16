@@ -1,19 +1,33 @@
 class PhotosController < ApplicationController
-  def index
-    @photos = Photo.all
-  end
+  before_action :fill_attr, only: [:new, :create]
+
+  #def index
+  #  @photos = Photo.all
+  #end
 
   def new
-    @photo = Photo.new
   end
 
   def create
-    @photo = Photo.new(params[:photo].permit(:title, :description))
 
     if @photo.valid?
-      redirect_to photos_path
+      @photo.save
+      redirect_to collection_photos_path(@collection, @photo)
     else
       render action: 'new'
     end
   end
+
+  private
+
+  def fill_attr
+    if params.key?(:photo)
+      @photo = Photo.new(params[:photo].permit(:title, :description, :url))
+    else
+      @photo = Photo.new
+    end
+
+    @photo.collection = @collection = Collection.find(Integer(params[:collection_id]))
+  end
+
 end
