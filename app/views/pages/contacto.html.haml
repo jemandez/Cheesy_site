@@ -1,0 +1,42 @@
+.contact
+    .contact__info
+        .info__direction
+            %p.info__label Dirección
+            %p.info__text Amozoc, Puebla. México
+
+        .info__telephone
+            %p.info__label Telefono
+            %p.info__text +52 222 277 204 68
+
+        .info__mail
+            %p.info__label Correo electronico
+            %p.info__text contacto@danielgordian.com
+
+        .info__social_networks
+            = link_to("#") do
+                %span.facebook
+
+            = link_to("#") do
+                %span.instagram
+
+
+    .contact__form
+        %p.contact__form__direct-message Charlemos, me encantaría leerte...
+
+        = form_tag("http://mail.danielgordian.com/deliver", method: "post", clas: 'form') do
+            .contact__form__name
+                = label_tag(:contact__name, "Nombre Completo", class: "form__label")
+                = text_field_tag(:contact__name, nil, class: "form__input--text")
+
+            .contact__form__email
+                = label_tag(:contact__password, "Correo Electronico", class: "form__label")
+                = email_field_tag(:contact__password, nil, class: "form__input--password")
+
+            .contact__form__message
+                = label_tag(:contact__message, "Mensaje", class: "form__label")
+                = text_area_tag(:contact__message, nil, class: "form__input--textarea")
+
+            = button_tag(type: 'submit', class: 'submit') do
+                Enviar
+                %span.submit__icon
+

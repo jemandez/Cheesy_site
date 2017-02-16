@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def conoceme
   end
+
+  def contacto
+  end
 end
