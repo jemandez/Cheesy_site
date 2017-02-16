@@ -1,0 +1,8 @@
+- @events.each do |event|
+  .mosaicos
+    %h2.mosaicos__title Bodas
+    - event.collections.each do |collection|
+      .mosaico
+        = link_to(collection) do
+          .mosaico__picture
+            = image_tag(collection.photos.last.url, alt: collection.photos.first.title)

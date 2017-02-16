@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :photos
   end
 
+  resources :events, path: 'eventos'
+  
   get '/paquetes', to: "pages#paquetes"
   get '/conoceme', to: "pages#conoceme"
   get '/contacto', to: "pages#contacto"

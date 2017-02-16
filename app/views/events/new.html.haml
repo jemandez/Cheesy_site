@@ -1,0 +1,9 @@
+= form_for(@event) do |f|
+  = label_tag("Nombre del evento")
+  = f.text_field :title
+  = label_tag("Descrición del evento")
+  = f.text_area :description
+  = label_tag("Collecciones a incluir")
+  = collection_check_boxes(:event, :collections, @collections, :id, :title) do | b|
+    = b.label {b.check_box + b.text + image_tag(b.object.photos.last.url)}
+  = f.submit

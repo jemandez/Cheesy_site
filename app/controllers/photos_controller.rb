@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
 
     if @photo.valid?
       @photo.save
-      redirect_to collection_photos_path(@collection, @photo)
+      redirect_to collections_path(@collection)
     else
       render action: 'new'
     end

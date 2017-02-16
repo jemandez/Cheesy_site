@@ -18,8 +18,7 @@ ActiveRecord::Schema.define(version: 20170216070455) do
     t.string   "photos"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "event_id"
-    t.index ["event_id"], name: "index_collections_on_event_id"
+    t.         "event"
   end
 
   create_table "events", force: :cascade do |t|
