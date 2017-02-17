@@ -2,7 +2,8 @@
     @include outer-container;
     @include row;
     @include fill-parent;
-
+    position: relative;
+    
     &__title {
         padding-top: 30px;
         font-size: 2em;

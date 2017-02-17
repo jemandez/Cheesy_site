@@ -3,7 +3,8 @@
     @include fill-parent;
     @include outer-container;
     padding-top: 50px;
-
+    position: relative;
+    
     &__title {
         font-size: 2em;
         font-family: futura;

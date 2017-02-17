@@ -1,5 +1,7 @@
 .mosaicos
     %h2.mosaicos__title Portafolio
+    - if admin_signed_in?
+        = link_to "Crear colleción", new_collection_path, class: "button button--add"
     - @collections.each do |collection|
         .mosaico
             = link_to(collection) do
