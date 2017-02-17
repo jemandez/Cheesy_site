@@ -1,0 +1,33 @@
+<div class="signs--container">
+<h2 class="main-title">Inicio de sesión</h2>
+
+<div class="form--center">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="fields-last">
+  <div class="field">
+    <%= f.label :email, nil, class: ["form__label"]%><br />
+    <%= f.email_field :email, autofocus: true, class: ["form__input--text"] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, nil, class: ["form__label"] %>
+    <%= f.password_field :password, autocomplete: "off" , class: ["form__input--password"]%>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me, class: ["form__checkbox", "inline"]%>
+      <%= f.label :remember_me, nil, class: ["form__label", "inline"] %>
+    </div>
+  <% end -%>
+
+</div>
+   <%= button_tag(type: 'submit', class: 'submit') do %>
+      Iniciar sesión
+      <span class="submit__icon" >
+    <% end %>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
