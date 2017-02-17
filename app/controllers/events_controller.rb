@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  protect_from_forgery prepend: true
+  before_action :authenticate_admin!, except: [:index]
+  
   def index
     @events = Event.all
   end
