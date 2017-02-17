@@ -3,7 +3,7 @@
     @include row;
     @include fill-parent;
     position: relative;
-    
+
     &__title {
         padding-top: 30px;
         font-size: 2em;
@@ -18,7 +18,7 @@
 
     .mosaico {
         @include span-columns(4);
-        max-height: 236px;
+        height: 236px;
         overflow: hidden;
         margin-bottom: 28px;
 
@@ -33,6 +33,9 @@
 
 
         @include media(min-width 1024px) {
+            margin-right: 1%;
+            padding-left: 1%;
+            //padding-right: 1%;
             &.no-left {
                 margin-right: 0px;
             }
