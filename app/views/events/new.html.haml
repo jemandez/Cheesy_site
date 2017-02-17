@@ -1,9 +1,12 @@
-= form_for(@event) do |f|
-  = label_tag("Nombre del evento")
-  = f.text_field :title
-  = label_tag("Descrición del evento")
-  = f.text_area :description
-  = label_tag("Collecciones a incluir")
-  = collection_check_boxes(:event, :collections, @collections, :id, :title) do | b|
-    = b.label {b.check_box + b.text + image_tag(b.object.photos.last.url)}
-  = f.submit
+.events-container
+  = form_for(@event) do |f|
+    = label_tag("Nombre del evento", nil, class: ["form__label"])
+    = f.text_field :title, class: ["form__input--text"]
+    = label_tag("Descrición del evento", nil, class: ["form__label"])
+    = f.text_area :description, class: ["form__input--textarea"]
+    = label_tag("Collecciones a incluir", nil, class: ["form__label"])
+    = collection_check_boxes(:event, :collections, @collections, :id, :title) do | b|
+      = b.label(class: ["thumbnail"], style: "background-image: url('#{b.object.photos.last.url}')") {b.check_box + content_tag(:p, b.text, class: 'thumbnail__title')}
+    = button_tag(type: 'submit', class: 'submit') do
+      Crear evento
+      %span.submit__icon

@@ -1,5 +1,8 @@
 class PhotosController < ApplicationController
+  protect_from_forgery prepend: true
+  before_action :authenticate_admin!
   before_action :fill_attr, only: [:new, :create]
+
 
   #def index
   #  @photos = Photo.all

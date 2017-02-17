@@ -66,35 +66,3 @@
     }
 }
 
-
-.form {
-    @include span-columns(12);
-
-    &__label {
-        display: block;
-        margin-bottom: 10px;
-        clear: both;
-    }
-
-    &__input {
-        &--password, &--textarea, &--text {
-            @include span-columns(8);
-            display: block;
-            border: 1px #F0F0F0 solid;
-            padding: .5em;
-            box-sizing: border-box;
-            font-size: 1em;
-            margin-bottom: 15px;
-        }
-
-        &--textarea {
-            @include span-columns(12);
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            resize: none;
-            height: 130px;
-            padding: 5px;
-        }
-    }
-}
