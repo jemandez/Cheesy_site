@@ -1,9 +1,9 @@
-- @events.each do |event|
-  .events--relative
-    - if admin_signed_in?
-      = link_to "Crear colleción", new_event_path, class: "button button--add"
+.events--relative
+  - if admin_signed_in?
+    = link_to "Crear evento", new_event_path, class: "button button--add"
+  - @events.each do |event|
     .mosaicos
-      %h2.mosaicos__title Bodas
+      %h2.mosaicos__title= event.title
       - event.collections.each do |collection|
         .mosaico
           = link_to(collection) do
