@@ -1,9 +1,13 @@
-= form_for @collection, action: 'create' do |f|
-  .form_field
-    %label{for: 'collection_title'} Nombra la collección
-    = f.text_field :title
-  .form_field
-    %label{for: 'collection_description'} Cuentanos que se muestra en esta colleción
-    = f.text_area :description
+.collection-container
+  = form_for @collection, action: 'create' do |f|
+    .form_field
+      = label_tag "Nombra la collección", nil, class: ["form__label"], for: "collection_title"
+      = f.text_field :title, class: ["form__input--text"]
 
-  = f.submit 'Crear colleción'
+    .form_field
+      = label_tag "Cuentanos que se muestra en esta colleción", nil, class: ["form__label"], for: 'collection_description'
+      = f.text_area :description, class: ["form__input--textarea"]
+
+    = button_tag(type: 'submit', class: 'submit') do
+      Crear colleción
+      %span.submit__icon

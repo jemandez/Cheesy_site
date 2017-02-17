@@ -1,6 +1,7 @@
 .grid-image
     %h2.grid-image__title= @collection.title
-
+    - if admin_signed_in?
+        = link_to "Agregar foto", new_collection_photo_path(@collection), class: "button button--add"
     - @collection.photos.each do |photo|
         .grid-image__container
             = image_tag(photo.url, class: "grid-image__container__picture",  alt: photo.title)

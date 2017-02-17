@@ -1,11 +1,18 @@
-= form_for [@collection, @photo], action: "create" do |f|
-  .form_field
-    %label{for: 'photo[title]'} Nombre de la fotografia
-    = f.text_field :title
-  .form_field
-    %label{for: 'photo[description]'} Descripción de la fotografia
-    = f.text_area :description
-  .form_field
-    %label{for: 'photo[url]'} Url de la imagen
-    = f.text_field :url
-  = f.submit "Crear"
+.photos-container
+  = form_for [@collection, @photo], action: "create" do |f|
+    .form_field
+      = label_tag "Nombre de la fotografia", nil, class: ["form__label"], for: 'photo_title'
+      = f.text_field :title, class: ["form__input--text"]
+
+    .form_field
+      = label_tag "Url de la imagen", nil, class: ["form__label"], for: "photo_url"
+      = f.text_field :url, class: ["form__input--text"]
+
+    .form_field
+      = label_tag "Descripción de la fotografia", nil, class: ["form__label"], for: 'photo_description'
+      = f.text_area :description, class: ["form__input--textarea"]
+
+    = button_tag(type: 'submit', class: 'submit') do
+      Agregar foto
+      %span.submit__icon
+
