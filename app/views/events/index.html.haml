@@ -8,4 +8,7 @@
         .mosaico
           = link_to(collection) do
             .mosaico__picture
-              = image_tag(collection.photos.last.url, alt: collection.photos.first.title)
+              - unless collection.photos.empty?
+                = image_tag(collection.photos.last.url, alt: collection.photos.first.title)
+              - else
+                = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
