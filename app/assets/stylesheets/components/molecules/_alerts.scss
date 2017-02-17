@@ -1,0 +1,21 @@
+.message {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.notice:not(:empty) {
+    @extend .message;
+    color: rgb(1, 152, 117);
+    background-color: #F0F0F0;
+}
+
+.alert:not(:empty) {
+    @extend .message;
+    color: rgba(204, 0, 0, 1);
+    background-color: #F0F0F0;
+}

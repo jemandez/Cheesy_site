@@ -1,0 +1,59 @@
+.form {
+    @include span-columns(12);
+
+    &__label {
+        display: block;
+        margin-bottom: 10px;
+        clear: both;
+    }
+
+    &__input {
+        &--password, &--textarea, &--text {
+            @include span-columns(8);
+            display: block;
+            border: 1px #F0F0F0 solid;
+            padding: .5em;
+            box-sizing: border-box;
+            font-size: 1em;
+            margin-bottom: 25px;
+        }
+
+        &--textarea {
+            @include span-columns(12);
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            resize: none;
+            height: 130px;
+            padding: 5px;
+        }
+    }
+
+    
+    .submit {
+        margin-top: 50px;
+        margin-right: 30px;
+        display: block;
+        clear: both;
+        background-color: #F0F0F0;
+        padding: 10px 15px 10px 20px;
+        border: 1px #C0C0C0 solid;
+        font-weight: bold;
+        float: right;
+        &__icon:after {
+            display: inline-block;
+            content: ' ';
+            background-image: url("/img/60525.svg");
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            vertical-align: middle;
+            height: 20px;
+            width: 20px;
+            margin-left: 10px;
+        }
+    }
+}
+
+form {
+    @extend .form;
+}

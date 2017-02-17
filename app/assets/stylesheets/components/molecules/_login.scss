@@ -1,0 +1,15 @@
+.login {
+    position: absolute;
+    right: 10%;
+    top: 30%;
+
+  &__action {
+      &--profile, &--exit {
+          display: inline-block;
+      }
+
+      &--profile {
+          margin-right: 13px;
+      }
+  }
+}
