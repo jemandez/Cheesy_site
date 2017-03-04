@@ -30,4 +30,11 @@
         margin-top: 3px;
         letter-spacing: 4px;
     }
+
+    &__image {
+      @include span-columns(1.4);
+      margin-left: auto;
+      margin-right: auto;
+      float: none;
+    }
 }
