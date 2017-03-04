@@ -1,0 +1,42 @@
+.footer{
+  @include row;
+  background-color: #00180f;
+  color: #F0F0F0;
+  margin-top: 2em;
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:80px;
+  width:100%;
+
+  &_about{
+    @include span-columns(7.5);
+    padding-left: 2.2em;
+
+    &-title{
+      font-size: 1.3em;
+      font-weight: 800;
+      margin: 1rem 0 0.6rem;
+    }
+    &-link{
+      color: #F0F0F0;
+      font-size: 1.1em;
+    }
+  }
+
+  &_rights{
+    @include span-columns(4.5);
+    padding-left: 2.2em;
+
+    &-call2action{
+      font-size: 1.3em;
+      font-weight: 800;
+      margin: 1rem 0 0.6rem;
+    }
+
+    &-copyright{
+      color: #F0F0F0;
+      font-size: 1.1em;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.schools{
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+
+  &_brand{
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+
+    &-logo{
+      margin: 1em 2em;
+      max-height: 200px;
+      max-width: 400px;
+    }
+
+    &-name{
+      font-size: 2em;
+    }
+  }
+
+}

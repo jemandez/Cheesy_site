@@ -1,9 +1,15 @@
 .one-page {
     @include span-columns(12);
 
+;
+
     &__branding {
         @include branding;
+        display: flex;
+        justify-content: space-between;
     }
+
+
 
     &__menu {
         @include menu;
