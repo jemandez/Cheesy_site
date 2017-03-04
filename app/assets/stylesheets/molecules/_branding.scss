@@ -31,7 +31,4 @@
         background-color: red;
     }
 
-    &__image {
-        @include grid-column(3);
-    }
 }

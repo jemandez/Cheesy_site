@@ -4,20 +4,22 @@
 
   %a.no-link{href:"/"}
     = image_tag("isologo-1.png",  class: 'one-page__branding__image')
-    .one-page__branding__title Gordián
-    .one-page__branding__sub-title Memories that last
     .login
       - if admin_signed_in?
         %p.login__action--profile= "Hola #{current_admin.email}"
         = link_to("Salir", destroy_admin_session_path, method: :delete, class: ['.login__action--exit'])
-
+  %button.one-page__branding__loggin-button Entrar
 %button.c-hamburger.c-hamburger--rot
   .span toggle menu
+/
+  .one-page__menu
+    - pages.each do |page|
+      - status = ""
+      - if page.downcase == action_name.downcase
+        - status = "active"
 
-.one-page__menu
-  - pages.each do |page|
-    - status = ""
-    - if page.downcase == action_name.downcase
-      - status = "active"
+      %a{class: "one-page__menu__item #{status}", href: "/#{page.downcase}"} #{page.capitalize}
 
-    %a{class: "one-page__menu__item #{status}", href: "/#{page.downcase}"} #{page.capitalize}
+  = image_tag("image.png", class: '.one-page__big-picture')
+
+
