@@ -1,14 +1,32 @@
+%section.jumbotron
+  %h2 Nuestros clientes
+
 .events--relative
-  - if admin_signed_in?
-    = link_to "Crear evento", new_event_path, class: "button button--add"
-  - @events.each do |event|
-    .mosaicos
-      %h2.mosaicos__title= event.title
-      - event.collections.each do |collection|
-        .mosaico
-          = link_to(collection) do
-            .mosaico__picture
-              - unless collection.photos.empty?
-                = image_tag(collection.photos.last.url, alt: collection.photos.first.title)
-              - else
-                = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+  .mosaicos
+    %h2.mosaicos__title Generacion
+    .mosaico
+      .mosaico__picture
+        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+    .mosaico
+      .mosaico__picture
+        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+    .mosaico
+      .mosaico__picture
+        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+
+
+/
+  .events--relative
+    - if admin_signed_in?
+      = link_to "Crear evento", new_event_path, class: "button button--add"
+    - @events.each do |event|
+      .mosaicos
+        %h2.mosaicos__title= event.title
+        - event.collections.each do |collection|
+          .mosaico
+            = link_to(collection) do
+              .mosaico__picture
+                - unless collection.photos.empty?
+                  = image_tag(collection.photos.last.url, alt: collection.photos.first.title)
+                - else
+                  = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
