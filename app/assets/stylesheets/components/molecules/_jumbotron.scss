@@ -5,9 +5,14 @@
   justify-content: center;
   min-height: 60vh;
   padding: 1em;
-  background-color: rgba(0, 24, 15, 0.70);
-  background-image: url("/class-group.jpg");
   color: #F0F0F0;
+  background: no-repeat center center fixed;
+  background-image: linear-gradient(#161918, rgba(239, 234, 236, 0.1)), url(https://placeimg.com/640/480/any);
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+
 
   h1{
     font-size: 5em;
@@ -17,4 +22,7 @@
   h2{
     font-size: 2em;
   }
+
 }
+
+
