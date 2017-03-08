@@ -18,6 +18,17 @@
       .mosaico__picture
         = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
 
+%a.btn{"data-popup-open" => "popup-1", :href => "#"}
+  %img{:alt => "Imagen de prueba", :src => "http://placepu.gs/500/300"}/
+.popup{"data-popup" => "popup-1"}
+  %a.popup_close{"data-popup-close" => "popup-1", :href => "#"} x
+  %img{:alt => "Imagen de prueba", :src => "http://placepu.gs/1500/900"}/
+  .popup_inner
+    %h2.popup_inner-title Juan Perez Dominguez
+    .popup_inner-data
+      %p F:Juanito Perez
+      %p T:2224596831
+      %p @ juan.perez@gmail.com
 
 /
   .events--relative
