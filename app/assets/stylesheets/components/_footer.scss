@@ -5,37 +5,38 @@
   margin-top: 2em;
   left:0px;
   bottom:0px;
-  height:80px;
+  height: 45px;
   width:100%;
 
   &_about{
-    @include span-columns(7.5);
+    @include span-columns(5);
+    @include shift(2);
     padding-left: 2.2em;
 
     &-title{
-      font-size: 1.3em;
+      font-size: .9em;
       font-weight: 800;
-      margin: 1rem 0 0.6rem;
+      margin: .5rem 0 0.3rem;
     }
     &-link{
       color: #F0F0F0;
-      font-size: 1.1em;
+      font-size: .8em;
     }
   }
 
   &_rights{
-    @include span-columns(4.5);
+    @include span-columns(5);
     padding-left: 2.2em;
 
     &-call2action{
-      font-size: 1.3em;
+      font-size: .9em;
       font-weight: 800;
-      margin: 1rem 0 0.6rem;
+      margin: .5rem 0 0.3rem;
     }
 
     &-copyright{
       color: #F0F0F0;
-      font-size: 1.1em;
+      font-size: .8em;
     }
   }
 }

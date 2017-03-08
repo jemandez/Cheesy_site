@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :events, path: 'generaciones'
   resources :photos, path: 'alumnos'
 
-  root "pages#home"
+  root 'schools#index'
+  #root "pages#home"3
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
