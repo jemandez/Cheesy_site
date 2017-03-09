@@ -1,3 +1,9 @@
+.schools-container {
+  @include outer-container;
+  padding-top: 50px;
+}
+
+
 .schools{
   display: flex;
   justify-content: space-around;
