@@ -2,14 +2,12 @@
 
     @include row();
     @include fill-parent;
-        
+
     padding-top: 20px;
     padding-bottom: 20px;
-    position: relative;
-    background: linear-gradient(90deg,#000403 0,#172d25 25%,#0d352d);
-    -webkit-box-shadow: 0px 7px 5px 0px rgba(0,0,0,0.55);
-    -moz-box-shadow: 0px 7px 5px 0px rgba(0,0,0,0.55);
-    box-shadow: 0px 7px 5px 0px rgba(0,0,0,0.55);
+    position: fixed;
+    z-index: 2;
+    background: transparent;
     
     .no-link {
        text-decoration: none;

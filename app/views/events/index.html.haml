@@ -2,33 +2,41 @@
   %h1 Generación 2017
   %h2 Grupo A
   %div.jumbotron_buttons
-    %a.jumbotron_buttons-item Expandir
+    %a.jumbotron_buttons-item{"data-popup-open" => "popup-generation", :href => "#"} Expandir
     %a.jumbotron_buttons-item Descargar
 
 .events--relative
   .mosaicos
     %h2.mosaicos__title Alumnos
     .mosaico
-      .mosaico__picture
+      .mosaico__picture{"data-popup-open" => "popup-student", :href => "#"}
         = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
     .mosaico
-      .mosaico__picture
+      .mosaico__picture{"data-popup-open" => "popup-student", :href => "#"}
         = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
     .mosaico
-      .mosaico__picture
+      .mosaico__picture{"data-popup-open" => "popup-student", :href => "#"}
         = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
 
-%a.btn{"data-popup-open" => "popup-1", :href => "#"}
-  %img{:alt => "Imagen de prueba", :src => "http://placepu.gs/500/300"}/
-.popup{"data-popup" => "popup-1"}
+
+.popup{"data-popup" => "popup-student"}
   %a.popup_close{"data-popup-close" => "popup-1", :href => "#"} x
-  %img{:alt => "Imagen de prueba", :src => "http://placepu.gs/1500/900"}/
+  %a.popup-arrow.popup-arrow-previous{:href => "#"} <
+  %a.popup-arrow.popup-arrow-next{:href => "#"} >
+  %img.popup_image{:alt => "Imagen de prueba", :src => "http://placepu.gs/1500/900"}/
   .popup_inner
     %h2.popup_inner-title Juan Perez Dominguez
     .popup_inner-data
       %p F:Juanito Perez
       %p T:2224596831
       %p @ juan.perez@gmail.com
+
+//Group photo popup
+.popup{"data-popup" => "popup-generation"}
+  %a.popup_close{"data-popup-close" => "popup-2", :href => "#"} x
+  %img.popup_image{:alt => "Imagen de prueba", :src => "http://placepu.gs/500/300"}/
+  .popup_inner
+    %h2.popup_inner-title Generación 2017
 
 /
   .events--relative
