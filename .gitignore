@@ -19,3 +19,7 @@ tmp/*
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore ideas files
+.idea/*
+
