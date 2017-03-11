@@ -3,22 +3,7 @@
   %h2 Nuestros clientes
 
 %section.container.schools
-  %a.schools_brand{href:"http://localhost:3000/admins/sign_in"}
-    = image_tag("BINE-logo.png",  class: 'schools_brand-logo', href:"http://localhost:3000/admins/sign_in")
-    %p.schools_brand-name Benemérito Instituto Normal del Estado
-
-  %a.schools_brand{href:"http://localhost:3000/admins/sign_in"}
-    = image_tag("BINE-logo.png",  class: 'schools_brand-logo', href:"http://localhost:3000/admins/sign_in")
-    %p.schools_brand-name Benemérito Instituto Normal del Estado
-
-  %a.schools_brand{href:"http://localhost:3000/admins/sign_in"}
-    = image_tag("CENCH-logo.png",  class: 'schools_brand-logo', href:"http://localhost:3000/admins/sign_in")
-    %p.schools_brand-name Centro Escolar Niños Heroes de Chapultepec
-
-  %a.schools_brand{href:"http://localhost:3000/admins/sign_in"}
-    = image_tag("CENCH-logo.png",  class: 'schools_brand-logo')
-    %p.schools_brand-name Centro Escolar Niños Heroes de Chapultepec
-
-  %a.schools_brand{href:"http://localhost:3000/admins/sign_in"}
-    = image_tag("BINE-logo.png",  class: 'schools_brand-logo', href:"http://localhost:3000/admins/sign_in")
-    %p.schools_brand-name Benemérito Instituto Normal del Estado
+  - @schools.each do |school|
+    %a.schools_brand{href: school_path(school)}
+      = image_tag(school.url,  class: 'schools_brand-logo', alt: school.name)
+      %p.schools_brand-name= school.name
