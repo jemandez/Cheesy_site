@@ -1,4 +1,4 @@
 class Photo < ApplicationRecord
-  belongs_to :collection
+  belongs_to :group
   validates :url, presence: true
 end
