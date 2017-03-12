@@ -6,25 +6,29 @@
 
 .schools{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-flow: row wrap;
-
-  &_brand{
-    justify-content: space-around;
-    text-align: center;
-    align-items: center;
+  align-items: flex-start;
+  &__brand{
+    margin-left: 20px;
     margin-bottom: 2em;
     text-decoration: none;
 
-    &-logo{
-      margin: 1em 2em;
-      max-height: 200px;
-      max-width: 400px;
-    }
+    &__group {
+      height: 200px;
+      width: 300px;
+      display: inline-block;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: relative;
 
-    &-name{
-      font-size: 2em;
-      color: #000;
+      &__title {
+        font-size: 1.4em;
+        color: #333;
+        bottom: 0;
+        position: absolute;
+      }
     }
   }
 

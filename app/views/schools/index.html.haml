@@ -2,8 +2,7 @@
   %h1= @msg
   %h2 Nuestros clientes
 
-%section.container.schools
+.schools.schools-container
   - @schools.each do |school|
-    %a.schools_brand{href: school_path(school)}
-      = image_tag(school.url,  class: 'schools_brand-logo', alt: school.name)
-      %p.schools_brand-name= school.name
+    %a.schools__brand{href: school_path(school)}
+      .schools__brand__group{style: "background-image: url('#{image_url(school.url)}')"}
