@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170216070455) do
   create_table "collections", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "photos"
+    t.string   "students"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.         "event"

@@ -1,5 +1,5 @@
 .photos-container
-  = form_for [@group, @photo], action: "create" do |f|
+  = form_for [@group, @student], action: "create" do |f|
     .form_field
       = label_tag "Nombre de la fotografia", nil, class: ["form__label"], for: 'photo_title'
       = f.text_field :title, class: ["form__input--text"]

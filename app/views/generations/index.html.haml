@@ -31,7 +31,7 @@
       %p T:2224596831
       %p @ juan.perez@gmail.com
 
-//Group photo popup
+//Group student popup
 .popup{"data-popup" => "popup-generation"}
   %a.popup_close{"data-popup-close" => "popup-2", :href => "#"} x
   %img.popup_image{:alt => "Imagen de prueba", :src => "http://placepu.gs/500/300"}/
@@ -49,7 +49,7 @@
           .mosaico
             = link_to(collection) do
               .mosaico__picture
-                - unless collection.photos.empty?
-                  = image_tag(collection.photos.last.url, alt: collection.photos.first.title)
+                - unless collection.students.empty?
+                  = image_tag(collection.students.last.url, alt: collection.students.first.title)
                 - else
                   = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
