@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 200) {
+        $(".one-page__branding").addClass("one-page__branding--solid");
+    } else {
+        $(".one-page__branding").removeClass("one-page__branding--solid");
+    }
+});
