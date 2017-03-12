@@ -1,0 +1,55 @@
+%section.jumbotron
+  %h1 Generación 2017
+  %h2 Grupo A
+  %div.jumbotron_buttons
+    %a.jumbotron_buttons-item{"data-popup-open" => "popup-generation", :href => "#"} Expandir
+    %a.jumbotron_buttons-item Descargar
+
+.events--relative
+  .mosaicos
+    %h2.mosaicos__title Alumnos
+    .mosaico
+      .mosaico__picture{"data-popup-open" => "popup-student", :href => "#"}
+        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+    .mosaico
+      .mosaico__picture{"data-popup-open" => "popup-student", :href => "#"}
+        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+    .mosaico
+      .mosaico__picture{"data-popup-open" => "popup-student", :href => "#"}
+        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+
+
+.popup{"data-popup" => "popup-student"}
+  %a.popup_close{"data-popup-close" => "popup-1", :href => "#"} x
+  %a.popup-arrow.popup-arrow-previous{:href => "#"} <
+  %a.popup-arrow.popup-arrow-next{:href => "#"} >
+  %img.popup_image{:alt => "Imagen de prueba", :src => "http://placepu.gs/1500/900"}/
+  .popup_inner
+    %h2.popup_inner-title Juan Perez Dominguez
+    .popup_inner-data
+      %p F:Juanito Perez
+      %p T:2224596831
+      %p @ juan.perez@gmail.com
+
+//Group photo popup
+.popup{"data-popup" => "popup-generation"}
+  %a.popup_close{"data-popup-close" => "popup-2", :href => "#"} x
+  %img.popup_image{:alt => "Imagen de prueba", :src => "http://placepu.gs/500/300"}/
+  .popup_inner
+    %h2.popup_inner-title Generación 2017
+
+
+  .generations--relative
+    - if admin_signed_in?
+      = link_to "Crear generación", new_generation_path, class: "button button--add"
+    - @generations.each do |event|
+      .mosaicos
+        %h2.mosaicos__title= event.title
+        - event.collections.each do |collection|
+          .mosaico
+            = link_to(collection) do
+              .mosaico__picture
+                - unless collection.photos.empty?
+                  = image_tag(collection.photos.last.url, alt: collection.photos.first.title)
+                - else
+                  = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")

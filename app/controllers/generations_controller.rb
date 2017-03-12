@@ -1,32 +1,36 @@
-class EventsController < ApplicationController
+class GenerationsController < ApplicationController
   protect_from_forgery prepend: true
   before_action :authenticate_admin!, except: [:index]
   
   def index
-    @events = Event.all
+    @generations = Generation.all
   end
 
   def new
-    @event = Event.new
+    @generation = Generation.new
     @collections = Collection.all
   end
 
   def create
-    new_params = params[:event].permit(:title, :description, collections: [])
+    new_params = params[:generation].permit(:title, :description, collections: [])
 
     new_params[:collections] = Collection.find(
       new_params[:collections].delete_if { |x| x.empty? })
 
-    @event = Event.new(new_params)
+    @generation = Generation.new(new_params)
 
 
-    if @event.valid?
-      @event.save
+    if @generation.valid?
+      @generation.save
       redirect_to events_path
     else
       @collections = Collection.all
       render :new
     end
+
+  end
+
+  def show
 
   end
 end
