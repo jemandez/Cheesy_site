@@ -1,22 +1,24 @@
 %section.jumbotron
-  %h1 Generación 2017
-  %h2 Grupo A
+  %h1= @generation.title
   %div.jumbotron_buttons
     %a.jumbotron_buttons-item{"data-popup-open" => "popup-generation", :href => "#"} Expandir
     %a.jumbotron_buttons-item Descargar
 
+
+.grid-image
+  - if admin_signed_in?
+    = link_to "Agregar grupo", new_school_generation_group_path(@school, @generation), class: "button button--add"
+
 .events--relative
   .mosaicos
-    %h2.mosaicos__title Alumnos
-    .mosaico
-      .mosaico__picture{"data-popup-open" => "popup-student", :href => "#"}
-        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
-    .mosaico
-      .mosaico__picture{"data-popup-open" => "popup-student", :href => "#"}
-        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
-    .mosaico
-      .mosaico__picture{"data-popup-open" => "popup-student", :href => "#"}
-        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+    %h2.mosaicos__title Grupos
+    - @generation.groups.each do |group|
+      = link_to([@school, @generation, group]) do
+        .mosaico
+          .mosaico__picture{:href => school_generation_group_path(@school, @generation, group)}
+            = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+            %h3= group.title
+
 
 
 .popup{"data-popup" => "popup-student"}

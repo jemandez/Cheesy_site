@@ -9,13 +9,20 @@ class StudentsController < ApplicationController
   #end
 
   def new
+    @group = Group.find params[:group_id]
+    @generation = Generation.find(params[:generation_id])
+    @school = School.find(params[:school_id])
   end
 
   def create
+    @group = Group.find params[:group_id]
+    @generation = Generation.find(params[:generation_id])
+    @school = School.find(params[:school_id])
+    @student.group = @group
 
     if @student.valid?
       @student.save
-      redirect_to group_path(@group)
+      redirect_to school_generation_group_path(@school, @generation, @group)
     else
       render action: 'new'
     end

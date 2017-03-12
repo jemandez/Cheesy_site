@@ -1,5 +1,5 @@
 .events-container
-  = form_for(@generation) do |f|
+  = form_for([@school, @generation]) do |f|
     = label_tag("Nombre del generación", nil, class: ["form__label"])
     = f.text_field :title, class: ["form__input--text"]
     = label_tag("Descrición del generación", nil, class: ["form__label"])

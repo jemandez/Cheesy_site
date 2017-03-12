@@ -1,3 +1,3 @@
 class School < ApplicationRecord
-  has_many :events
+  has_many :generations
 end
