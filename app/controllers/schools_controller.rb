@@ -2,7 +2,7 @@ class SchoolsController < ApplicationController
   protect_from_forgery prepend: true
 
   def index
-    @msg = "Ḧola!"
+    @schools = School.all
   end
 
   def new
