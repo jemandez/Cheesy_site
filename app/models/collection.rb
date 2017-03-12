@@ -1,6 +1,6 @@
-class Group < ApplicationRecord
+class Collection < ApplicationRecord
   has_many :photos
-  belongs_to :generation, optional: true
+  belongs_to :event, optional: true
 
   validates :title, presence: true
   validates :description, presence: true

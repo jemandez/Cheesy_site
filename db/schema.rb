@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312010723) do
+ActiveRecord::Schema.define(version: 20170303211711) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -33,23 +33,23 @@ ActiveRecord::Schema.define(version: 20170312010723) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "generations", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "school_id"
-    t.index ["school_id"], name: "index_generations_on_school_id"
-  end
-
-  create_table "group", force: :cascade do |t|
+  create_table "collections", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "photos"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "event_id"
-    t.index ["event_id"], name: "index_group_on_event_id"
+    t.index ["event_id"], name: "index_collections_on_event_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "school_id"
+    t.index ["school_id"], name: "index_events_on_school_id"
   end
 
   create_table "photos", force: :cascade do |t|

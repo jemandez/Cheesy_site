@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
 
     if @photo.valid?
       @photo.save
-      redirect_to collections_path(@group)
+      redirect_to collections_path(@collection)
     else
       render action: 'new'
     end
@@ -30,7 +30,7 @@ class PhotosController < ApplicationController
       @photo = Photo.new
     end
 
-    @photo.collection = @group = Group.find(Integer(params[:collection_id]))
+    @photo.collection = @collection = Collection.find(Integer(params[:collection_id]))
   end
 
 end

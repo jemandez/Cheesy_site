@@ -1,8 +1,8 @@
 .mosaicos
-    %h2.mosaicos__title Grupos
+    %h2.mosaicos__title Portafolio
     - if admin_signed_in?
-        = link_to "Crear colleción", new_group_path, class: "button button--add"
-    - @groups.each do |collection|
+        = link_to "Crear colleción", new_collection_path, class: "button button--add"
+    - @collections.each do |collection|
         .mosaico
             = link_to(collection) do
                 .mosaico__picture
