@@ -1,5 +1,5 @@
 .collection-container
-  = form_for @collection, action: 'create' do |f|
+  = form_for @group, action: 'create' do |f|
     .form_field
       = label_tag "Nombra la collección", nil, class: ["form__label"], for: "collection_title"
       = f.text_field :title, class: ["form__input--text"]

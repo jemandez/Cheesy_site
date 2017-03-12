@@ -1,4 +1,4 @@
-class Collection < ApplicationRecord
+class Group < ApplicationRecord
   has_many :photos
   belongs_to :generation, optional: true
 

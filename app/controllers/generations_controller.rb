@@ -8,14 +8,14 @@ class GenerationsController < ApplicationController
 
   def new
     @generation = Generation.new
-    @collections = Collection.all
+    @groups = Group.all
   end
 
   def create
-    new_params = params[:generation].permit(:title, :description, collections: [])
+    new_params = params[:generation].permit(:title, :description, groups: [])
 
-    new_params[:collections] = Collection.find(
-      new_params[:collections].delete_if { |x| x.empty? })
+    new_params[:groups] = Group.find(
+      new_params[:groups].delete_if { |x| x.empty? })
 
     @generation = Generation.new(new_params)
 
@@ -24,7 +24,7 @@ class GenerationsController < ApplicationController
       @generation.save
       redirect_to events_path
     else
-      @collections = Collection.all
+      @groups = Group.all
       render :new
     end
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: { registrations: "registrations"}
-  resources :collections, path: 'portafolio' do
+  resources :groups, path: 'grupos' do
     resources :photos
   end
   

@@ -45,7 +45,7 @@
     - @generations.each do |event|
       .mosaicos
         %h2.mosaicos__title= event.title
-        - event.collections.each do |collection|
+        - event.groups.each do |collection|
           .mosaico
             = link_to(collection) do
               .mosaico__picture

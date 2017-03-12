@@ -5,7 +5,7 @@
     = label_tag("Descrición del generación", nil, class: ["form__label"])
     = f.text_area :description, class: ["form__input--textarea"]
     = label_tag("Collecciones a incluir", nil, class: ["form__label"])
-    = collection_check_boxes(:generation, :collections, @collections, :id, :title) do | b|
+    = collection_check_boxes(:generation, :groups, @groups, :id, :title) do | b|
       - unless b.object.photos.empty?
         = b.label(class: ["thumbnail"], style: "background-image: url('#{b.object.photos.last.url}')") {b.check_box + content_tag(:p, b.text, class: 'thumbnail__title')}
       - else
