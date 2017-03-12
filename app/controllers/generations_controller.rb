@@ -22,8 +22,9 @@ class GenerationsController < ApplicationController
 
     if @generation.valid?
       @generation.save
-      redirect_to events_path
+      redirect_to generations_path
     else
+      flash[:notice] = @generation.errors.messages
       @groups = Group.all
       render :new
     end

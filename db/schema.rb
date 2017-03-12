@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312010723) do
+ActiveRecord::Schema.define(version: 20170312024127) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -42,24 +42,14 @@ ActiveRecord::Schema.define(version: 20170312010723) do
     t.index ["school_id"], name: "index_generations_on_school_id"
   end
 
-  create_table "group", force: :cascade do |t|
+  create_table "groups", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "photos"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "event_id"
-    t.index ["event_id"], name: "index_group_on_event_id"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "url"
-    t.integer  "collection_id"
-    t.index ["collection_id"], name: "index_photos_on_collection_id"
+    t.integer  "generation_id"
+    t.index ["generation_id"], name: "index_groups_on_generation_id"
   end
 
   create_table "schools", force: :cascade do |t|
@@ -67,6 +57,16 @@ ActiveRecord::Schema.define(version: 20170312010723) do
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "url"
+    t.integer  "group_id"
+    t.index ["group_id"], name: "index_students_on_group_id"
   end
 
 end

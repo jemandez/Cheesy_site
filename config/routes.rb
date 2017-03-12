@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: { registrations: "registrations"}
   resources :groups, path: 'grupos' do
-    resources :photos
+    resources :students
   end
   
   get '/paquetes', to: "pages#paquetes"
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :schools, path: 'escuelas'
   resources :generations, path: 'generaciones'
-  resources :photos, path: 'alumnos'
+  resources :students, path: 'alumnos'
 
   root 'schools#index'
   #root "pages#home"3

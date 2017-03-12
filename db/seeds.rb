@@ -13,5 +13,5 @@ School.create(name: "Instituto Mexicano Madero",
               url: "http://www.imm.edu.mx/toledo/images/easyblog_images/63/logoimm2.png")
 
 if Admin.count == 0
-  Admin.new({:email => "m@gmail.com", :password => "123456", :password_confirmation => "123456", :confirmed_at => Time.now }).save(false)
+  Admin.new({:email => "m@gmail.com", :password => "123456", :password_confirmation => "123456", :confirmed_at => Time.now }).save
 end

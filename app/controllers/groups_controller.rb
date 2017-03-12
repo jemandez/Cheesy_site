@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
     @group = Group.new clean_params
 
     if @group.save
-      redirect_to collections_path
+      redirect_to groups_path
     else
       render action: 'new'
     end
