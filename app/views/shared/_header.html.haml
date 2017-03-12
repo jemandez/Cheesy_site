@@ -7,8 +7,9 @@
     .login
       - if admin_signed_in?
         %p.login__action--profile= "Hola #{current_admin.email}"
-        = link_to("Salir", destroy_admin_session_path, method: :delete, class: ['.login__action--exit'])
-  %a.one-page__branding__loggin-button{href:"http://localhost:3000/admins/sign_in"} Entrar
+        = link_to("Salir", destroy_admin_session_path, method: :delete, class: ['login__action--exit'])
+      - else
+        = link_to("Login",  new_admin_session_path, class: ['login__action--exit'])
 %button.c-hamburger.c-hamburger--rot
   .span toggle menu
 /

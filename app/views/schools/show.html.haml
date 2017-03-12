@@ -1,0 +1,15 @@
+%section.jumbotron
+  %h1= @school.name
+.grid-image
+  - if admin_signed_in?
+    = link_to "Agregar generación", new_school_generation_path(@school), class: "button button--add"
+
+.events--relative
+  .mosaicos
+    %h2.mosaicos__title Generaciones
+  - @school.generations.each do |generation|
+    = link_to([@school, generation]) do
+      .mosaico
+        .mosaico__picture{:href => school_generation_path(generation)}
+          = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+        %h2.mosaico__title= generation.title

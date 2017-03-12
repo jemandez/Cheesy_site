@@ -1,8 +1,12 @@
 %section.jumbotron
-  %h1= @msg
-  %h2 Nuestros clientes
+  %h1 Cheesy
+  %h2 Historias que perduran
 
-.schools.schools-container
-  - @schools.each do |school|
-    %a.schools__brand{href: school_path(school)}
-      .schools__brand__group{style: "background-image: url('#{image_url(school.url)}')"}
+.grid-image
+  - if admin_signed_in?
+    = link_to "Agregar una escuela", new_school_path, class: "button button--add"
+.schools-container
+  .schools
+    - @schools.each do |school|
+      %a.schools__brand{href: school_path(school)}
+        .schools__brand__group{style: "background-image: url('#{image_url(school.url)}')"}

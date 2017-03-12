@@ -29,4 +29,8 @@ class SchoolsController < ApplicationController
   def delete
 
   end
+
+  def show
+    @school = School.find(params[:id])
+  end
 end

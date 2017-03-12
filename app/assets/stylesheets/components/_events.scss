@@ -5,6 +5,7 @@
 
 .events-container {
     @include outer-container;
+    padding-top: 150px;
     margin-bottom: 50px;
     margin-top: 50px;
 }

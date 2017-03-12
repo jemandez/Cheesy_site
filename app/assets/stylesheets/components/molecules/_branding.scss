@@ -6,13 +6,16 @@
     padding-top: 20px;
     padding-bottom: 20px;
     position: fixed;
-    z-index: 2;
+    top: 0;
+    z-index: 200;
     background: transparent;
     transition: all 500ms;
     will-change: background;
+    min-height: 70px;
+    color: black;
   
     &--solid {
-      background-color: #F0F0F0;
+      background-color: rgba(25, 25, 25, 0.9);
       position: fixed;
       transition: all 500ms;
       will-change: background;

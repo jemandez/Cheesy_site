@@ -22,7 +22,9 @@
         overflow: hidden;
         margin-bottom: 28px;
 
-        @include media(min-width 320px max-width 480px) {
+
+
+      @include media(min-width 320px max-width 480px) {
             @include span-columns(6);
             margin-bottom: 8px;
             &:nth-child(odd) {

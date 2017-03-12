@@ -1,14 +1,17 @@
 .schools-container {
-  @include outer-container;
+  background-color: #FAFAFA;
   padding-top: 50px;
+  position: relative;
 }
 
 
 .schools{
+  @include outer-container;
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
   align-items: flex-start;
+  position: relative;
   &__brand{
     margin-left: 20px;
     margin-bottom: 2em;

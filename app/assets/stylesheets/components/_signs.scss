@@ -25,6 +25,7 @@
         margin-bottom: 35px;
     }
     @include outer-container;
+    padding-top: 100px;
     .form--center {
         @include shift(2);
         @include span-columns(8);
