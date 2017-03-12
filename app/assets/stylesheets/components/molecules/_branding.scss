@@ -8,6 +8,16 @@
     position: fixed;
     z-index: 2;
     background: transparent;
+    transition: all 500ms;
+    will-change: background;
+  
+    &--solid {
+      background-color: #F0F0F0;
+      position: fixed;
+      transition: all 500ms;
+      will-change: background;
+
+    }
     
     .no-link {
        text-decoration: none;
