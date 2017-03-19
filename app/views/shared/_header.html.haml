@@ -3,7 +3,7 @@
 .one-page__branding
 
   %a.no-link{href:"/"}
-    = image_tag("isologo-1.png",  class: 'one-page__branding__image')
+    = image_tag("isologo--negative.png",  class: 'one-page__branding__image')
     .login
       - if admin_signed_in?
         %p.login__action--profile= "Hola #{current_admin.email}"
