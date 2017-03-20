@@ -1,10 +1,10 @@
 .events-container
   = form_for([@school, @generation]) do |f|
-    = label_tag("Nombre del generación", nil, class: ["form__label"])
+    = label_tag("Nombre de la generación", nil, class: ["form__label"])
     = f.text_field :title, class: ["form__input--text"]
-    = label_tag("Descrición del generación", nil, class: ["form__label"])
+    = label_tag("Descripción de la generación", nil, class: ["form__label"])
     = f.text_area :description, class: ["form__input--textarea"]
-    = label_tag("Collecciones a incluir", nil, class: ["form__label"])
+    = label_tag("Colecciones a incluir", nil, class: ["form__label"])
     = collection_check_boxes(:generation, :groups, @groups, :id, :title) do | b|
       - unless b.object.students.empty?
         = b.label(class: ["thumbnail"], style: "background-image: url('#{b.object.students.last.url}')") {b.check_box + content_tag(:p, b.text, class: 'thumbnail__title')}

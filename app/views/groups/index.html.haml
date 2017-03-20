@@ -1,7 +1,7 @@
 .mosaicos
     %h2.mosaicos__title Grupos
     - if admin_signed_in?
-        = link_to "Crear colleción", new_group_path, class: "button button--add"
+        = link_to "Crear coleción", new_group_path, class: "button button--add"
     - @groups.each do |collection|
         .mosaico
             = link_to(collection) do
@@ -9,4 +9,4 @@
                     - unless collection.students.empty?
                         = image_tag(collection.students.last.url, alt: collection.students.first.title)
                     - else
-                        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta colleción")
+                        = image_tag("http://placepu.gs/500/300", alt: "No hay imagenes en esta coleción")
