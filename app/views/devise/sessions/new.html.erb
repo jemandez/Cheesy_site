@@ -10,14 +10,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :password, nil, class: ["form__label"] %>
+    <%= f.label :contraseña, nil, class: ["form__label"] %>
     <%= f.password_field :password, autocomplete: "off" , class: ["form__input--password"]%>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me, class: ["form__checkbox", "inline"]%>
-      <%= f.label :remember_me, nil, class: ["form__label", "inline"] %>
+      <%= f.label :recordar_mi_contraseña, nil, class: ["form__label", "inline"] %>
     </div>
   <% end -%>
 

@@ -11,7 +11,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password, nil, class: ["form__label"] %>
+    <%= f.label :contraseña, nil, class: ["form__label"] %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -19,7 +19,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, nil, class: ["form__label"] %><br />
+    <%= f.label :confirma_tu_contraseña, nil, class: ["form__label"] %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class: ["form__input--password"] %>
   </div>
 
