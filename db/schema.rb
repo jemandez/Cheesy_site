@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312024127) do
+ActiveRecord::Schema.define(version: 20170323230610) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(version: 20170312024127) do
   create_table "generations", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "school_id"
+    t.string   "password_hash"
     t.index ["school_id"], name: "index_generations_on_school_id"
   end
 
