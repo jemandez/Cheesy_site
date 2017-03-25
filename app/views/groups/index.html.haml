@@ -4,7 +4,7 @@
         = link_to "Crear coleción", new_group_path, class: "button button--add"
     - @groups.each do |collection|
         .mosaico
-            = link_to(collection) do
+            = link_to([@school, @generation, collection]) do
                 .mosaico__picture
                     - unless collection.students.empty?
                         = image_tag(collection.students.last.url, alt: collection.students.first.title)
