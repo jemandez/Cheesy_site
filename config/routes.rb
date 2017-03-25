@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: { registrations: "registrations"}
   resources :schools, path: 'escuelas' do
+    member do
+     get '/access', action: :access
+     post '/access', action: :validation
+    end
+
     resources :generations, path: 'generaciones' do
       resources :groups, path: 'grupos' do
         resources :students, path: 'alumnos'

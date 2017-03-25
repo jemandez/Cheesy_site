@@ -1,0 +1,6 @@
+.events-container
+  = form_tag(access_school_path(@school.id), method: "post") do
+    = label_tag(:clave, "Password")
+    = text_field_tag(:clave)
+
+    = submit_tag("Accesar")

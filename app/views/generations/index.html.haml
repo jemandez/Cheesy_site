@@ -41,13 +41,13 @@
 
   .generations--relative
     - if admin_signed_in?
-      = link_to "Crear generación", new_generation_path, class: "button button--add"
+      = link_to "Crear generación", new_school_generation_path(@school), class: "button button--add"
     - @generations.each do |event|
       .mosaicos
         %h2.mosaicos__title= event.title
         - event.groups.each do |collection|
           .mosaico
-            = link_to(collection) do
+            = link_to([@school, event, collection]) do
               .mosaico__picture
                 - unless collection.students.empty?
                   = image_tag(collection.students.last.url, alt: collection.students.first.title)
