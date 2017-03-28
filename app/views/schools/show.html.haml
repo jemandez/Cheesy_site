@@ -1,5 +1,5 @@
 %section.jumbotron
-  %h1= @school.name
+  %h1= @school.title
 .grid-image
   - if admin_signed_in?
     = link_to "Agregar generación", new_school_generation_path(@school), class: "button button--add"
