@@ -1,6 +1,11 @@
-.events-container
-  = form_tag(access_school_path(@school.id), method: "post") do
-    = label_tag(:clave, "Password")
-    = text_field_tag(:clave)
-
-    = submit_tag("Accesar")
+.signs--container
+  %h2.main-title Inicio de sesión
+  .form--center
+    .fields-last
+      .field
+        = form_tag(access_school_path(@school.id), method: "post") do
+          = label_tag(:clave, "Contraseña", class:"form__label")
+          = text_field_tag(:clave, "",class:"form__input--password")
+          = button_tag(type: 'submit', class: 'submit') do
+            Enviar
+            %span.submit__icon
