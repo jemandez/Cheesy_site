@@ -9,4 +9,4 @@
   .schools
     - @schools.each do |school|
       %a.schools__brand{href: school_path(school)}
-        .schools__brand__group{style: "background-image: url('#{image_url(school.url)}')"}
+        .schools__brand__group{style: "background-image: url('#{::DBX.get_temporary_link(school.dpath + '/logo.png')[1]}')"}

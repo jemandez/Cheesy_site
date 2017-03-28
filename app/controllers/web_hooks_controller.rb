@@ -55,7 +55,7 @@ class WebHooksController < ApplicationController
     end 
   end
 
-  def update_all(dbx, path, entity, allowed_type=Dropbox::FolderMetadata, **kwargs)
+  def update_all(dbx, path, entity, allowed_type=Dropbox::FolderMetadata, destroy=false, **kwargs)
       files = dbx.list_folder(path)
       delete_before = Time.current
       white_list = []
@@ -74,15 +74,16 @@ class WebHooksController < ApplicationController
           logger.info "validations #{record.errors.messages}" if record.valid?
 	end
       end
-
-      #entity.where("updated_at < ?", delete_before).each do |entity|
-      #   entity.destroy unless white_list.index(entity.did)
-      #end
+      if destroy
+        entity.where("updated_at < ?", delete_before).each do |e|
+          e.destroy unless white_list.index(e.did)
+        end
+      end
   end
 
 
   def match_schools(dbx)
-      update_all(dbx, "/Escuelas", School)
+      update_all(dbx, "/Escuelas", School, destroy=true)
       School.all.each do |school|
         match_generations(dbx, school, Generation)
       end
@@ -96,7 +97,11 @@ class WebHooksController < ApplicationController
     end
 
     entity.all.each do |generation|
+       begin
        match_group(dbx, generation, Group)
+       rescue
+       generation.destroy
+       end
     end
 
     new_cursor = dbx.get_latest_list_folder_cursor(item.dpath)
@@ -113,7 +118,11 @@ class WebHooksController < ApplicationController
     end
 
     entity.all.each do |group|
+       begin
        match_student(dbx, group, Student)
+       rescue
+       group.destroy
+       end
     end
 
     new_cursor = dbx.get_latest_list_folder_cursor(item.dpath)

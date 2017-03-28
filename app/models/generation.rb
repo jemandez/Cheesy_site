@@ -2,7 +2,7 @@ require 'bcrypt'
 
 class Generation < ApplicationRecord
   include BCrypt
-  has_many :groups
+  has_many :groups, :dependent => :destroy
   belongs_to :school, optional: true
 
   def password
