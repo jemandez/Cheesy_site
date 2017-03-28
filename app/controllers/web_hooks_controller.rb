@@ -18,11 +18,7 @@ class WebHooksController < ApplicationController
     if validate_signature == signature
       logger.info "list folder #{params[:list_folder]["accounts"]}"
 
-     if Admin.first.cursor
-        match_dropbox ::DBX, Admin.first
-     else
-        match_dropbox ::DBX, :all
-     end
+      match_schools ::DBX
 
     end
 
@@ -30,13 +26,34 @@ class WebHooksController < ApplicationController
   end
 
   protected
-  def update_with_cursor(dbx, cursor, entity, allowed_type=Dropbox::FolderMetadata)
+
+  def update_with_cursor(dbx, cursor, entity, allowed_type=Dropbox::FolderMetadata, **kwargs)
     changes = dbx.continue_list_folder(entity.cursor)
     delete = changes.select  { |item|  item.class == Dropbox::DeletedMetadata }
     update_or_create = changes.select  { |item|  item.class != Dropbox::DeletedMetadata }
+
+    delete.each do |item|
+      record = entity.find_by dpath: item.path_display
+      if record
+        exists = update_or_create.select { |item| item.id == record.did }
+        record.destroy unless exists
+      end
+    end
+
+    update_or_create.each do |item|
+      record.attributes = kwargs
+      record = entity.find_by did: item.id
+      record ||= entity.new
+
+      record.name = item.name
+      record.did = item.id
+      record.dpath = item.path_display
+
+      record.save
+    end if item.class == allowed_type
   end
 
-  def update_all(dbx, path, entity, allowed_type=Dropbox::FolderMetadata)
+  def update_all(dbx, path, entity, allowed_type=Dropbox::FolderMetadata, **kwargs)
       files = dbx.list_folder(path)
       delete_before = Time.current
 
@@ -45,6 +62,7 @@ class WebHooksController < ApplicationController
         record ||= entity.new
 
         if meta.class == type
+          record.attributes = kwargs
 	  record.title = meta.name
           record.did = meta.id
           record.dpath = meta.path_display
@@ -56,20 +74,30 @@ class WebHooksController < ApplicationController
   end
 
 
-  def match_root(dbx)
-         
+  def match_schools(dbx)
+      update_all(dbx, "/Escuelas", School)
+      School.all.each do |school|
+        match_generation(dbx, school, Generation)
+      end
   end
 
-  def match_events(dbx, entity)
+  def match_generations(db, item, entity)
+    if item.cursor
+       update_with_cursor(dbx, item.cursor, entity, school: item)
+    else:
+       update_all(dbx, item.dpath, entity, school: item)
+    end
+
+    entity.all.each do |group|
+       match_group(dbx, group, Group)
+    end
   end
 
-  def match_schools(dbx, entity)
-    
-  end
-
-  def match_generations(db, entity)
-  end
-
-  def match_group(db, entity)
+  def match_group(db, item, entity)
+    if item.cursor
+       update_with_cursor(dbx, item.cursor, entity, Dropbox::FileMetadata, group: item)
+    else:
+       update_all(dbx, item.dpath, entity, Dropbox::FileMetadata, group: item)
+    end
   end
 end
