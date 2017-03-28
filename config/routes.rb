@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'webhooks', action: 'index', controller: :web_hooks
+  post 'webhooks', action: 'modifications', controller: :web_hooks
+
   devise_for :admins, controllers: { registrations: "registrations"}
   resources :schools, path: 'escuelas' do
     member do
