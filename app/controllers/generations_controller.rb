@@ -12,23 +12,19 @@ class GenerationsController < ApplicationController
     end
   end
 
-  def new
-    @generation = Generation.new
+  def edit
+    @generation = Generation.find(params[:id])
     @groups = Group.all
     @school = School.find(params[:school_id])
   end
 
-  def create
-    new_params = params[:generation].permit(:title, :description, groups: [])
+  def update
+    new_params = params[:generation].permit(:password, :description)
     @school = School.find(params[:school_id])
-    new_params[:groups] = Group.find(
-      new_params[:groups].delete_if { |x| x.empty? })
 
-    @generation = Generation.new(new_params)
-    @generation.school = @school
+    @generation = Generation.find(params[:id])
 
-    if @generation.valid?
-      @generation.save
+    if @generation.update_attributes(new_params)
       redirect_to school_generation_path(@school, @generation)
     else
       flash[:notice] = @generation.errors.messages

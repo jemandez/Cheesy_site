@@ -1,7 +1,7 @@
 .grid-image
     %h2.grid-image__title= @group.title
-    - if admin_signed_in?
+    -#- if admin_signed_in?
         = link_to "Agregar un alumno", new_school_generation_group_student_path(@school, @generation, @group), class: "button button--add"
     - @group.students.each do |photo|
         .grid-image__container
-            = image_tag(photo.url, class: "grid-image__container__picture",  alt: photo.title)
+            = image_tag(::DBX.get_temporary_link(photo.dpath)[1] , class: "grid-image__container__picture",  alt: photo.title)

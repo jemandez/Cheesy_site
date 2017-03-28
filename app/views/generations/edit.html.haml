@@ -1,0 +1,9 @@
+.events-container
+  = form_for([@school, @generation]) do |f|
+    = label_tag("Password de la generación", nil, class: ["form__label"])
+    = f.password_field :password, class: ["form__input--text"]
+    = label_tag("Descripción de la generación", nil, class: ["form__label"])
+    = f.text_area :description, class: ["form__input--textarea"]
+    = button_tag(type: 'submit', class: 'submit') do
+      Confirmar cambios
+      %span.submit__icon
