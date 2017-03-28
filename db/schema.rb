@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323230610) do
+ActiveRecord::Schema.define(version: 20170328090548) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20170323230610) do
     t.datetime "updated_at",    null: false
     t.integer  "school_id"
     t.string   "password_hash"
+    t.string   "did"
+    t.string   "dpath"
     t.index ["school_id"], name: "index_generations_on_school_id"
   end
 
@@ -50,14 +52,18 @@ ActiveRecord::Schema.define(version: 20170323230610) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "generation_id"
+    t.string   "did"
+    t.string   "dpath"
     t.index ["generation_id"], name: "index_groups_on_generation_id"
   end
 
   create_table "schools", force: :cascade do |t|
-    t.string   "name"
+    t.string   "title"
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "did"
+    t.string   "dpath"
   end
 
   create_table "students", force: :cascade do |t|
@@ -67,6 +73,8 @@ ActiveRecord::Schema.define(version: 20170323230610) do
     t.datetime "updated_at",  null: false
     t.string   "url"
     t.integer  "group_id"
+    t.string   "did"
+    t.string   "dpath"
     t.index ["group_id"], name: "index_students_on_group_id"
   end
 

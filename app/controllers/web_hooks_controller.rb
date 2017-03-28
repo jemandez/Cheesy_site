@@ -45,7 +45,7 @@ class WebHooksController < ApplicationController
       record = entity.find_by did: item.id
       record ||= entity.new
 
-      record.name = item.name
+      record.title = item.name
       record.did = item.id
       record.dpath = item.path_display
 
