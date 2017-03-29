@@ -1,0 +1,13 @@
+.schools-container
+  = form_for @school, action: "update" do |f|
+    .form_field
+      = label_tag "Slogan de la escuela", nil, class: ["form__label"], for: "school_description"
+      = f.text_field :description, class: "form__input--textarea"
+
+    .form_field
+      = label_tag "Pagina web de la escuela", nil, class: ["form__label"], for: "school_url"
+      = f.url_field :url, class: "form__input--text"
+
+    = button_tag(type: "submit", class: "submit") do
+      Confirmar
+      %span.submit__icon

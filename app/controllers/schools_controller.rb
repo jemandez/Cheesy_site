@@ -8,14 +8,13 @@ class SchoolsController < ApplicationController
     @schools = School.all
   end
 
-  def new
-    @school = School.new
+  def edit
+    @school = School.find(params[:id])
   end
 
-  def create
-    @school = School.new(params[:school].permit(:name, :url))
-    if @school.valid?
-      @school.save
+  def update
+    @school = School.find(params[:id])
+    if @school.update_attributes(params[:school].permit(:description, :url))
       flash[:notice] = "Nueva escuela creada"
       redirect_to schools_path
     else
@@ -23,14 +22,6 @@ class SchoolsController < ApplicationController
       flash[:errors] = @school.errors.messages
       render :new
     end
-  end
-
-  def update
-
-  end
-
-  def delete
-
   end
 
   def show
