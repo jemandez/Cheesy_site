@@ -36,7 +36,7 @@ class WebHooksController < ApplicationController
       record = entity.find_by dpath: item.path_display
       if record
         exists = update_or_create.select { |item| item.id == record.did }
-        record.destroy unless exists
+        record.destroy if not exists or exists == []
       end
     end
 
@@ -45,99 +45,116 @@ class WebHooksController < ApplicationController
         record ||= entity.new
 
       if item.class == allowed_type
-        record.attributes = kwargs
-        record.title = item.name
-        record.did = item.id
-        record.dpath = item.path_display
-
-        record.save
+	  record.title = item.name if item.name != record.title
+          record.did = item.id if item.id != record.did
+          record.dpath = item.path_display if item.path_display != record.dpath
+          if record.changed?
+            record.attributes = kwargs
+            record.save
+          end
       end
     end 
   end
 
-  def update_all(dbx, path, entity, allowed_type=Dropbox::FolderMetadata, **kwargs)
+  def update_all(dbx, path, elements, entity, allowed_type=Dropbox::FolderMetadata, **kwargs)
       files = dbx.list_folder(path)
       delete_before = Time.current
       white_list = []
 
       files.each do |meta|
-        record = entity.find_by did: meta.id
+        record = elements.find_by did: meta.id
         white_list.push(meta.id)
         record ||= entity.new
 
         if meta.class == allowed_type
-          record.attributes = kwargs
-	  record.title = meta.name
-          record.did = meta.id
-          record.dpath = meta.path_display
-          record.save
+	  record.title = meta.name if meta.name != record.title
+          record.did = meta.id if meta.id != record.did
+          record.dpath = meta.path_display if meta.path_display != record.dpath
+          if record.changed?
+            record.attributes = kwargs
+            record.save
+          end
           logger.info "validations #{record.errors.messages}" if record.valid?
 	end
       end
-      #entity.where("updated_at < ?", delete_before).each do |e|
-      #  e.destroy unless white_list.index(e.did)
-      #end
+      elements.where("did NOT IN (?)", white_list).destroy_all
   end
 
 
   def match_schools(dbx)
-      update_all(dbx, "/Escuelas", School)
+      update_all(dbx, "/Escuelas", School.all, School)
       School.all.each do |school|
-        match_generations(dbx, school, Generation)
+	begin
+          match_generations(dbx, school, Generation)
+        rescue Dropbox::ApiError
+          school.destroy
+        end
       end
   end
 
   def match_generations(dbx, item, entity)
+    changes = []
     if item.cursor
        update_with_cursor(dbx, item.cursor, entity, school: item)
+       changes = dbx.continue_list_folder(item.cursor)
     else
-       update_all(dbx, item.dpath, entity, school: item)
+       update_all(dbx, item.dpath, item.generations, entity, school: item)
     end
 
-    entity.all.each do |generation|
+    item.generations.each do |generation|
        begin
        match_group(dbx, generation, Group)
        rescue Dropbox::ApiError
-       generation.destroy
+         generation.destroy
        end
     end
 
-#    new_cursor = dbx.get_latest_list_folder_cursor(item.dpath)
-#    item.cursor = new_cursor  if new_cursor != item.cursor
- 
-#    item.save
+
+    if changes != []
+      new_cursor = dbx.get_latest_list_folder_cursor(item.dpath)
+      item.cursor = new_cursor
+      item.save if item.changed? and item.persisted?
+    end
+
   end
 
   def match_group(dbx, item, entity)
+    changes = []
     if item.cursor
-       update_with_cursor(dbx, item.cursor, entity, generation: item)
+       update_with_cursor(dbx, 	item.cursor, entity, generation: item)
+       changes = dbx.continue_list_folder(item.cursor)
     else
-       update_all(dbx, item.dpath, entity, generation: item)
+       update_all(dbx, item.dpath, item.groups, entity, generation: item)
     end
 
-    entity.all.each do |group|
+    item.groups.each do |group|
        begin
-       match_student(dbx, group, Student)
+         match_student(dbx, group, Student)
        rescue Dropbox::ApiError
-       group.destroy
+         group.delete
        end
     end
 
-#    new_cursor = dbx.get_latest_list_folder_cursor(item.dpath)
-#    item.cursor = new_cursor if new_cursor != item.cursor
-
-#    item.save
+    if changes != []
+      new_cursor = dbx.get_latest_list_folder_cursor(item.dpath)
+      item.cursor = new_cursor
+      item.save if item.changed? and item.persisted?
+    end
   end
 
   def match_student(dbx, item, entity)
+    changes = []
     if item.cursor
        update_with_cursor(dbx, item.cursor, entity, Dropbox::FileMetadata, group: item)
+       changes = dbx.continue_list_folder(item.cursor)
     else
-       update_all(dbx, item.dpath, entity, Dropbox::FileMetadata, group: item)
+       update_all(dbx, item.dpath, item.students, entity, Dropbox::FileMetadata, group: item)
     end
 
-#    new_cursor = dbx.get_latest_list_folder_cursor(item.dpath)
-#    item.cursor = new_cursor if new_cursor != item.cursor
-#    item.save
+    if changes != []
+      new_cursor = dbx.get_latest_list_folder_cursor(item.dpath)
+      item.cursor = new_cursor
+      item.save if item.changed? and item.persisted?
+    end
   end
 end
