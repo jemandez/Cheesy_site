@@ -10,6 +10,10 @@
   - @group.students.each do |photo|
     .grid-image__container{"data-popup-open" => "popup-student", :href => "#"}
       = image_tag(::DBX.get_temporary_link(photo.dpath)[1] , class: "grid-image__container__picture",  alt: photo.title)
+      .actions
+        %p= link_to("Descargar", ::DBX.get_temporary_link(photo.dpath)[1])
+        - if current_admin
+          %p= link_to("Editar", edit_school_generation_group_student_path(@school, @generation, @group, photo))
 
     .popup{"data-popup" => "popup-student"}
       %a.popup_close{"data-popup-close" => "popup-1", :href => "#"} X
