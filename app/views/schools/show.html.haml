@@ -1,7 +1,7 @@
 - begin
   - image = ::DBX.get_temporary_link(@school.dpath + "/logo.png")[1]
 - rescue
-  - image = image_url("/assets/cover.png")
+  - image = image_url("cover.png")
 
 
 
@@ -20,7 +20,7 @@
           - begin
             - image= ::DBX.get_temporary_link(generation.dpath + "/logo.png")[1]
           - rescue
-            - image = image_url("/assets/cover.png")
+            - image = image_url("cover.png")
           
           .mosaico__picture{:href => school_generation_path(generation)}
             = image_tag(image, alt: "")
