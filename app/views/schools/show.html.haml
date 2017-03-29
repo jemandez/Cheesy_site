@@ -7,6 +7,10 @@
 
 %section.jumbotron{style: "background-image: linear-gradient(#161918, rgba(239, 234, 236, 0.1)), url(#{image})"}
   %h1= @school.title
+  - if @school.description
+    %blockquote
+      %p=  @school.description
+
 .grid-image
   - if admin_signed_in?
     = link_to "Editar escuela", edit_school_path(@school), class: "button button--add"
