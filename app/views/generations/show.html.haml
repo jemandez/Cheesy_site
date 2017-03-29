@@ -11,8 +11,7 @@
       %p{style: "color: #F0F0F0"}=  @generation.description
 
   %div.jumbotron_buttons
-    %a.jumbotron_buttons-item{"data-popup-open" => "popup-generation", :href => "#"} Expandir
-    %a.jumbotron_buttons-item Descargar
+    = link_to "Descargar", image, class: ["jumbotron_buttons-item", "button--download"], style: "background-color: #FAFAFA"
 
 
 .grid-image
