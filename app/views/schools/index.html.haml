@@ -1,4 +1,9 @@
-%section.jumbotron
+- begin
+  - image_url = ::DBX.get_temporary_link('/logo.png')[1]
+- rescue
+  - image_url = image_url("/assets/cover.png")
+  
+%section.jumbotron{style: "background-image: url('#{image_url}')"}
   %h1 Cheesy
   %h2 Historias que perduran
 
@@ -8,5 +13,10 @@
 .schools-container
   .schools
     - @schools.each do |school|
+      - begin
+        - image_url = ::DBX.get_temporary_link(school.dpath + '/logo.png')[1]
+      - rescue
+        - image_url = image_url("/assets/logos.png")
+
       %a.schools__brand{href: school_path(school)}
-        .schools__brand__group{style: "background-image: url('#{::DBX.get_temporary_link(school.dpath + '/logo.png')[1]}')"}
+        .schools__brand__group{style: "background-image: url('#{image_url}')"}
