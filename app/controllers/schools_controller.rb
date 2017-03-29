@@ -20,7 +20,7 @@ class SchoolsController < ApplicationController
     else
       logger.info "Form Errors: #{@school.errors.messages}"
       flash[:errors] = @school.errors.messages
-      render :new
+      render :edit
     end
   end
 
