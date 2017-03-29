@@ -1,8 +1,8 @@
 %section.jumbotron{style: "background-image: linear-gradient(#161918, rgba(239, 234, 236, 0.1)), url(#{::DBX.get_temporary_link(@school.dpath + "/logo.png")[1]})"}
   %h1= @school.title
--#.grid-image
+.grid-image
   - if admin_signed_in?
-    = link_to "Agregar generación", new_school_generation_path(@school), class: "button button--add"
+    = link_to "Editar escuela", edit_school_path(@school), class: "button button--add"
 
 .events--relative
   .mosaicos
