@@ -7,9 +7,9 @@
 .events--relative
   .mosaicos
     %h2.mosaicos__title Generaciones
-  - @school.generations.each do |generation|
-    = link_to([@school, generation]) do
-      .mosaico
-        .mosaico__picture{:href => school_generation_path(generation)}
-          = image_tag(::DBX.get_temporary_link(generation.dpath + "/logo.png")[1], alt: "No hay imagenes en esta colleción")
-        %h2.mosaico__title= generation.title
+    - @school.generations.each do |generation|
+      = link_to([@school, generation]) do
+        .mosaico
+          .mosaico__picture{:href => school_generation_path(generation)}
+            = image_tag(::DBX.get_temporary_link(generation.dpath + "/logo.png")[1], alt: "No hay imagenes en esta colleción")
+          %h2.mosaico__title= generation.title
