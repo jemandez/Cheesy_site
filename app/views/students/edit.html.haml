@@ -1,0 +1,18 @@
+.photos-container
+  = form_for [@school, @generation, @group, @student], action: "update" do |f|
+    .form_field
+      = label_tag "Telefono del estudiante", nil, class: ["form__label"], for: 'photo_telephone'
+      = f.text_field :telephone, class: ["form__input--text"]
+
+    .form_field
+      = label_tag "Facebook del estudiante", nil, class: ["form__label"], for: 'photo_facebook'
+      = f.text_field :facebook, class: ["form__input--text"]
+
+    .form_field
+      = label_tag "Correo del estudiante", nil, class: ["form__label"], for: 'photo_mail'
+      = f.text_field :mail, class: ["form__input--text"]
+
+    = button_tag(type: 'submit', class: 'submit') do
+      Hecho
+      %span.submit__icon
+

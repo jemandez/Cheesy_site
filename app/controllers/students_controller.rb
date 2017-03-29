@@ -1,43 +1,29 @@
 class StudentsController < ApplicationController
   protect_from_forgery prepend: true
   before_action :authenticate_admin!
-  before_action :fill_attr, only: [:new, :create]
+  before_action :fill_attr, only: [:edit, :update]
 
 
-  #def index
-  #  @students = Student.all
-  #end
-
-  def new
-    @group = Group.find params[:group_id]
-    @generation = Generation.find(params[:generation_id])
-    @school = School.find(params[:school_id])
+  def edit
   end
 
-  def create
-    @group = Group.find params[:group_id]
-    @generation = Generation.find(params[:generation_id])
-    @school = School.find(params[:school_id])
-    @student.group = @group
+  def update
+    clean_params = params[:student].permit(:facebook, :telephone, :mail)
 
-    if @student.valid?
-      @student.save
+    if @student.update_attributes(clean_params)
       redirect_to school_generation_group_path(@school, @generation, @group)
     else
-      render action: 'new'
+      render action: 'edit'
     end
   end
 
   private
 
   def fill_attr
-    if params.key?(:student)
-      @student = Student.new(params[:student].permit(:title, :description, :url))
-    else
-      @student = Student.new
-    end
-
-    @student.group = @group = Group.find(Integer(params[:group_id]))
+    @student = Student.find(params[:id])
+    @group = @student.group
+    @generation = @group.generation
+    @school = @generation.school
   end
 
 end
