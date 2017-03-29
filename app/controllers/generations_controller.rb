@@ -29,7 +29,7 @@ class GenerationsController < ApplicationController
     else
       flash[:notice] = @generation.errors.messages
       @groups = Group.all
-      render :new
+      render :edit
     end
 
   end

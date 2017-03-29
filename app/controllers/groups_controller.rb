@@ -24,23 +24,22 @@ class GroupsController < ApplicationController
     end
   end
 
-  def new
-    @group = Group.new
+  def edit
+    @group = Group.find params[:id]
     @generation = Generation.find(params[:generation_id])
     @school = School.find(params[:school_id])
   end
 
-  def create
-    clean_params =  params[:group].permit(:title, :description)
-    @group = Group.new clean_params
+  def update
+    clean_params =  params[:group].permit(:description)
+    @group = Group.find(params[:id])
     @generation = Generation.find(params[:generation_id])
     @school = School.find(params[:school_id])
-    @group.generation = @generation
 
-    if @group.save
+    if @group.update_attributes(clean_params)
       redirect_to school_generation_group_path(@school, @generation, @group)
     else
-      render action: 'new'
+      render action: 'edit'
     end
   end
 

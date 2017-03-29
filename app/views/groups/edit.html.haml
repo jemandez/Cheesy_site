@@ -1,13 +1,9 @@
 .collection-container
-  = form_for [@school, @generation, @group], action: 'create' do |f|
-    .form_field
-      = label_tag "Nombre del grupo", nil, class: ["form__label"], for: "collection_title"
-      = f.text_field :title, class: ["form__input--text"]
-
+  = form_for [@school, @generation, @group], action: 'edit' do |f|
     .form_field
       = label_tag "Cuentanos que se muestra en este grupo", nil, class: ["form__label"], for: 'collection_description'
       = f.text_area :description, class: ["form__input--textarea"]
 
     = button_tag(type: 'submit', class: 'submit') do
-      Crear coleción
+      Hecho
       %span.submit__icon

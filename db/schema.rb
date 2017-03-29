@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329135112) do
+ActiveRecord::Schema.define(version: 20170329143002) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -79,6 +79,9 @@ ActiveRecord::Schema.define(version: 20170329135112) do
     t.integer  "group_id"
     t.string   "did"
     t.string   "dpath"
+    t.string   "facebook"
+    t.string   "telephone"
+    t.string   "mail"
     t.index ["group_id"], name: "index_students_on_group_id"
   end
 
