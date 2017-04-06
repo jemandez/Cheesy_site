@@ -34,24 +34,3 @@
           .mosaico__picture{:href => school_generation_group_path(@school, @generation, group)}
             = image_tag(image, alt: group.description || "Foto grupal")
             %h3= group.title
-
-
-
-.popup{"data-popup" => "popup-student"}
-  %a.popup_close{"data-popup-close" => "popup-1", :href => "#"} x
-  %a.popup-arrow.popup-arrow-previous{:href => "#"} <
-  %a.popup-arrow.popup-arrow-next{:href => "#"} >
-  %img.popup_image{:alt => "Imagen de prueba", :src => "http://placepu.gs/1500/900"}/
-  .popup_inner
-    %h2.popup_inner-title Juan Perez Dominguez
-    .popup_inner-data
-      %p F:Juanito Perez
-      %p T:2224596831
-      %p @ juan.perez@gmail.com
-
-//Group student popup
-.popup{"data-popup" => "popup-generation"}
-  %a.popup_close{"data-popup-close" => "popup-2", :href => "#"} x
-  %img.popup_image{:alt => "Imagen de prueba", :src => "http://placepu.gs/500/300"}/
-  .popup_inner
-    %h2.popup_inner-title Generación 2017
