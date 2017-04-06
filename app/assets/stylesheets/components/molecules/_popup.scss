@@ -1,109 +1,127 @@
-//colors
-$black_75: rgba(0,0,0,0.75);
-$black_100: rgba(0,0,0,1);
-$color_zeus_70_approx: rgba(36, 31, 31, 0.7);
-$alabaster: #fafafa;
-$black_80: rgba(0,0,0,0.8);
-$white: #fff;
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.7;
+  }
+}
 
-//fonts
-$font_0: Arial;
-$font_1: Sans-Serif;
+/* The Modal (background) */
 
-.popup {
-  z-index: 5;
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: $black_75;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+}
 
-  &_image{
-    display: block;
-    @include outer-container(100%);
-    max-width: 90%;
-    padding-top: 2em;
+/* Modal Content (image) */
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 900px;
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+/* Add Animation */
+
+#caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
   }
 
-  &-arrow{
-    transition: ease 0.25s all;
-    border-radius: 1000px;
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+
+/* The Close Button */
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  &:hover, &:focus {
+    color: #bbb;
     text-decoration: none;
-    font-family: $font_0, $font_1;
-    font-size: 2em;
-    text-align: center;
-    line-height: 100%;
-    color: $white;
-
-    &-previous{
-      @include  span-columns(6, block-collapse);
-      position: absolute;
-      left: 0;
-      top: 50%;
-      text-align: left;
-      padding-left: 1em;
-    }
-    &-next{
-      @include span-columns(6, block-collapse);
-      position: absolute;
-      right: 0;
-      top: 50%;
-      text-align: right;
-      padding-right: 1em;
-    }
+    cursor: pointer;
   }
+}
 
-  &_inner {
-    z-index: 10;
-    position: fixed;
-    left: 0;
-    bottom: 0;
+.modal-footer {
+  z-index: 10;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 1);
+  background: rgba(26, 26, 26, 0.6);
+  color: #fafafa;
+}
+
+.modal-footer-data {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 22.49666%;
+  margin-left: 21.32451%;
+  font-weight: bold;
+}
+
+.modal-footer-title {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 44.55627%;
+  margin-left: 4.2649%;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+  .modal-content {
     width: 100%;
-    padding: 40px;
-    box-shadow: 0 3px 7px $black_100;
-    background: $color_zeus_70_approx;
-    color: $alabaster;
-
-    &-title {
-      @include span-columns(5.5);
-      @include shift(.5);
-
-      font-size: 2em;
-      font-weight: 700;
-    }
-    &-data {
-      @include span-columns(3.5);
-      @include shift(2.5);
-    }
-
   }
-
-  &_close {
-    width: 30px;
-    height: 30px;
-    margin: 20px 20px 0 0;
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transition: ease 0.25s all;
-    transform: translate(50%, -50%);
-    border-radius: 1000px;
-    background: $black_80;
-    font-family: $font_0, $font_1;
-    font-size: 20px;
-    text-align: center;
-    line-height: 100%;
-    color: $white;
-    &:hover {
-      transform: translate(50%, -50%) rotate(180deg);
-      background: $black_100;
-      text-decoration: none;
-    }
+  .modal-footer-title, .modal-footer-data {
+    width: 100%;
+    padding: 0 auto;
   }
 }

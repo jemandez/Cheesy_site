@@ -27,6 +27,15 @@ class WebHooksController < ApplicationController
 
   protected
 
+  def update_photo(item, type, force=false)
+     return if type != Dropbox::FileMetadata
+     if item.photo_timestamp.nil? or (item.photo_timestamp + 3.hours) > Time.current or force
+         item.url = ::DBX.get_temporary_link(item.dpath)[1]
+         item.photo_timestamp = Time.current
+     end
+  end
+
+
   def update_with_cursor(dbx, cursor, entity, allowed_type=Dropbox::FolderMetadata, **kwargs)
     changes = dbx.continue_list_folder(cursor)
     delete = changes.select  { |item|  item.class == Dropbox::DeletedMetadata }
@@ -48,8 +57,10 @@ class WebHooksController < ApplicationController
 	  record.title = item.name if item.name != record.title
           record.did = item.id if item.id != record.did
           record.dpath = item.path_display if item.path_display != record.dpath
+
           if record.changed?
             record.attributes = kwargs
+            update_photo(record, allowed_type, force: true)
             record.save
           end
       end
@@ -71,6 +82,7 @@ class WebHooksController < ApplicationController
           record.did = meta.id if meta.id != record.did
           record.dpath = meta.path_display if meta.path_display != record.dpath
           if record.changed?
+            update_photo(record, allowed_type, force: true)
             record.attributes = kwargs
             record.save
           end
