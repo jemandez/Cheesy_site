@@ -29,11 +29,12 @@ class WebHooksController < ApplicationController
 
   def update_photo(item, type, force=false)
      return if type != Dropbox::FileMetadata
-     if item.photo_timestap.nil? or (item.photo_timestap + 3.hours) > Time.current or force
-         item.url = ::DBX.get_temporary_link(item.dpath)
-         item.photo_timestap = Time.current
+     if item.photo_timestamp.nil? or (item.photo_timestamp + 3.hours) > Time.current or force
+         item.url = ::DBX.get_temporary_link(item.dpath)[1]
+         item.photo_timestamp = Time.current
      end
   end
+
 
   def update_with_cursor(dbx, cursor, entity, allowed_type=Dropbox::FolderMetadata, **kwargs)
     changes = dbx.continue_list_folder(cursor)
