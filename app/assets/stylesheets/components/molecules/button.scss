@@ -27,3 +27,35 @@
        margin-left: 10px;
    }
 }
+
+
+.button--download {
+  @extend .button;
+  right: auto;
+  top: auto;
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+  &:after {
+    background-image: url("/img/download.png");
+  }
+}
+
+.button--edit {
+  @extend .button;
+
+  top: auto;
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+  &:after {
+    background-image: url("/img/download.png");
+  }
+}
+
+.actions {
+  display: inline-block;
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
