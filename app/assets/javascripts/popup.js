@@ -1,18 +1,34 @@
-$(function() {
-    //----- OPEN
-    $('[data-popup-open]').on('click', function(e)  {
-        var targeted_popup_class = jQuery(this).attr('data-popup-open');
-        $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+$(document).ready(function(){
+  var modal = document.getElementById('myModal');
+  var img = document.getElementById('myImg');
+  var modalImg = document.getElementById("img");
 
-        e.preventDefault();
-    });
+  var captionText = document.getElementById("modal-name");
+  var captionface = document.getElementById("modal-face");
+  var captionphone = document.getElementById("modal-phone");
+  var captionmail = document.getElementById("modal-mail");
 
-    //----- CLOSE
-    $('[data-popup-close]').on('click', function(e)  {
-        var targeted_popup_class = jQuery(this).attr('data-popup-close');
-        $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+  $(".grid-image__container__picture").click(function(){
+      console.log("click!");
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.name;
+      captionface.innerText = this.getAttribute("face");
+      captionphone.innerText = this.getAttribute("phone");
+      captionmail.innerText = this.getAttribute("mail");
+  })
 
-        e.preventDefault();
-    });
+  var span = document.getElementsByClassName("close")[0];
 
-});
+  $(span).click(function(){
+    console.log("hola span!");
+    modal.style.display = "none";
+  })
+
+  $(window).click(function(){
+    console.log("hola window!");
+    if (event.target == modal) {
+        modal.style.display = "block";
+    }
+  })
+})
