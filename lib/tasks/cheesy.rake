@@ -4,7 +4,25 @@ namespace :cheesy do
       match_schools ::DBX
   end
 
+  desc "Update students photos links"
+  task update_photos: :environment do
+     Student.all.each do |student|
+        update_photo(student, Dropbox::FileMetadata)
 
+        student.save if student.url_changed?
+     end
+  end
+
+
+  def update_photo(item, type, force=false)
+     return if type != Dropbox::FileMetadata
+     if item.photo_timestamp.nil? or (item.photo_timestamp + 3.hours) > Time.current or force
+         item.url = ::DBX.get_temporary_link(item.dpath)[1]
+         item.photo_timestamp = Time.current
+     end
+  end
+
+ 
   def update_with_cursor(dbx, cursor, entity, allowed_type=Dropbox::FolderMetadata, **kwargs)
     changes = dbx.continue_list_folder(cursor)
     delete = changes.select  { |item|  item.class == Dropbox::DeletedMetadata }

@@ -8,24 +8,19 @@
       %p=  @group.description
 
   - @group.students.each do |photo|
-    .grid-image__container{"data-popup-open" => "popup-student", :href => "#"}
-      = image_tag(::DBX.get_temporary_link(photo.dpath)[1] , class: "grid-image__container__picture",  alt: photo.title)
+    .grid-image__container{:href => "#"}
+      = image_tag(photo.url, class: "grid-image__container__picture",  alt: photo.title, name: photo.title, face: photo.facebook, phone: photo.telephone, mail: photo.mail)
       .actions
-        %p= link_to("Descargar", ::DBX.get_temporary_link(photo.dpath)[1])
+        %p= link_to("Descargar", photo.url)
         - if current_admin
           %p= link_to("Editar", edit_school_generation_group_student_path(@school, @generation, @group, photo))
 
-    .popup{"data-popup" => "popup-student"}
-      %a.popup_close{"data-popup-close" => "popup-1", :href => "#"} X
-      %a.popup-arrow.popup-arrow-previous{:href => "#"} <
-      %a.popup-arrow.popup-arrow-next{:href => "#"} >
-      %img.popup_image{:alt => "Imagen de prueba", :src => ::DBX.get_temporary_link(photo.dpath)[1]}/
-      .popup_inner
-        %h2.popup_inner-title= File.basename(photo.title, File.extname(photo.title))
-        .popup_inner-data
-          - if photo.facebook
-            %p F: #{photo.facebook}
-          - if photo.telephone
-            %p T: #{photo.telephone}
-          - if photo.mail
-            %p @: #{photo.mail}
+#myModal.modal
+  %span.close ×
+  %img#img.modal-content/
+  #caption.modal-footer
+    %h3#modal-name.modal-footer-title
+    #caption-data.modal-footer-data
+      %p#modal-face
+      %p#modal-phone
+      %p#modal-mail
