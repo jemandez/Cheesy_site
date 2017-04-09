@@ -14,11 +14,11 @@
     -o-background-size: cover;
     position: absolute;
 
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
   }
   .jumbotron {
     width: 100%;
@@ -44,7 +44,10 @@
     }
 
     h2 {
-      font-size: 2em;
+      font-size: 3em;
+      font-family: 'Cookie', cursive;
+      text-shadow: 1px 1px #333;
+      letter-spacing: 2px;
     }
     &_buttons {
       @include shift(9);
