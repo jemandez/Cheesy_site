@@ -1,12 +1,16 @@
 - begin
   - image = ::DBX.get_temporary_link(@school.dpath + "/logo.png")[1]
 - rescue
-  - image = image_url("/assets/cover.png")
+  - image = image_url("cover.png")
 
 
 
 %section.jumbotron{style: "background-image: linear-gradient(#161918, rgba(239, 234, 236, 0.1)), url(#{image})"}
   %h1= @school.title
+  - if @school.description
+    %blockquote
+      %p=  @school.description
+
 .grid-image
   - if admin_signed_in?
     = link_to "Editar escuela", edit_school_path(@school), class: "button button--add"
@@ -20,7 +24,7 @@
           - begin
             - image= ::DBX.get_temporary_link(generation.dpath + "/logo.png")[1]
           - rescue
-            - image = image_url("/assets/cover.png")
+            - image = image_url("cover.png")
           
           .mosaico__picture{:href => school_generation_path(generation)}
             = image_tag(image, alt: "")
