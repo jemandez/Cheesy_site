@@ -16,6 +16,11 @@
   text-align: center;
   position: relative;
 
+  &__logo {
+    width: 30em;
+    margin-bottom: 1em;
+  }
+
   h1{
     font-size: 5em;
     font-weight: 400;
