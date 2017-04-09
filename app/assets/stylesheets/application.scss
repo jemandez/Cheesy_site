@@ -16,8 +16,15 @@
 @import 'fonts/main.scss';
 @import 'components/main.scss';
 @import url('https://fonts.googleapis.com/css?family=Cookie');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 
 body {
   background-color:  #FAFAFA;
   position: relative;
+}
+
+a {
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
 }
