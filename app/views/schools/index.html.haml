@@ -2,10 +2,11 @@
   - image_url = ::DBX.get_temporary_link('/logo.png')[1]
 - rescue
   - image_url = image_url("cover.png")
-  
-%section.jumbotron{style: "background-image: url('#{image_url}')"}
-  = image_tag("isologo--negative.png", class: ["jumbotron__logo"])
-  %h2 Historias que se cuentan con sonrisas
+.jumbotrons
+  %section.jumbotron--blur{style: "background-image: url('#{image_url}')"}
+  %section.jumbotron
+    = image_tag("isologo--negative.png", class: ["jumbotron__logo"])
+    %h2 Historias que se cuentan con sonrisas
 
 .schools-container
   .schools
