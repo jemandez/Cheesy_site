@@ -16,7 +16,7 @@ namespace :cheesy do
 
   def update_photo(item, type, force=false)
      return if type != Dropbox::FileMetadata
-     if item.photo_timestamp.nil? or (item.photo_timestamp + 3.hours) > Time.current or force
+     if item.photo_timestamp.nil? or (item.photo_timestamp + 3.hours) <= Time.current or force
          item.url = ::DBX.get_temporary_link(item.dpath)[1]
          item.photo_timestamp = Time.current
      end
