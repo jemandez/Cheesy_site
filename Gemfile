@@ -53,3 +53,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'dropbox-sdk-v2'
 gem 'figaro'
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'
