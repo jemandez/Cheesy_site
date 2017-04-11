@@ -125,3 +125,15 @@
     padding: 0 auto;
   }
 }
+
+.next-image,
+.prev-image{
+  font-size: 4em;
+  color: white;
+  position: fixed;
+  top: 50%;
+}
+
+.next-image{
+  right: 0;
+}
