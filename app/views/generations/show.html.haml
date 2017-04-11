@@ -2,16 +2,17 @@
   - image = ::DBX.get_temporary_link(@generation.dpath + "/logo.png")[1]
 - rescue
   - image = image_url("cover.png")
+.jumbotrons
+  %section.jumbotron--blur{style: "background-image: radial-gradient(transparent,  transparent,  #000), url('#{image}')"}
+  %section.jumbotron
+    %h1= @generation.title
 
-%section.jumbotron{style: "background-image: linear-gradient(#161918, rgba(239, 234, 236, 0.1)), url(#{image})"}
-  %h1= @generation.title
+    - if @generation.description
+      %blockquote
+        %p{style: "color: #F0F0F0"}=  @generation.description
 
-  - if @generation.description
-    %blockquote
-      %p{style: "color: #F0F0F0"}=  @generation.description
-
-  %div.jumbotron_buttons
-    = link_to "Descargar", image, class: ["jumbotron_buttons-item", "button--download"], style: "background-color: #FAFAFA"
+    %div.jumbotron_buttons
+      = link_to "Descargar", image, class: ["jumbotron_buttons-item", "button--download"], style: "background-color: #FAFAFA"
 
 
 .grid-image

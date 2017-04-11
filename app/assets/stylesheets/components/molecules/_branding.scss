@@ -3,8 +3,8 @@
     @include row();
     @include fill-parent;
 
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     position: fixed;
     top: 0;
     z-index: 200;
@@ -20,6 +20,9 @@
       transition: all 500ms;
       will-change: background;
 
+      img {
+        display: block;
+      }
     }
     
     .no-link {
@@ -51,8 +54,7 @@
       margin-left: 2.5em;
       margin-right: auto;
       float: none;
-      position: absolute;
-
+      display: none;
     }
 
     &__loggin-button{

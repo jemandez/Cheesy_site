@@ -1,62 +1,88 @@
-.jumbotron{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  padding: 1em;
-  color: #F0F0F0;
-  background: no-repeat center center fixed;
-  background-image: linear-gradient(#161918, rgba(239, 234, 236, 0.1)), url(https://placeimg.com/640/480/any);
-  background-color: rgba(255, 255, 255, 0.5) !important;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  vertical-align: middle;
-  text-align: center;
+.jumbotrons {
+  width: 100%;
+  min-height: 70vh;
   position: relative;
 
-  h1{
-    font-size: 5em;
-    font-weight: 400;
-  }
-
-  h2{
-    font-size: 2em;
-  }
-  &_buttons{
-    @include shift(9);
+  .jumbotron--blur {
+    min-height: 70vh;
+    width: 100%;
+    background: no-repeat center center fixed;
+    background-image: linear-gradient(#161918, rgba(239, 234, 236, 0.1)), url(https://placeimg.com/640/480/any);
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     position: absolute;
-    bottom: 3%;
-    right: 3%;
 
-    &-item{
-      background-color: #dfdfdf;
-      border: none;
-      border-radius: .4em;
-      box-sizing: border-box;
-      color: #212;
-      cursor: pointer;
-      display: inline-block;
-      font-size: .95em;
-      font-weight: 700;
-      padding: .6em .8em .8em;
-      text-decoration: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -webkit-tap-highlight-color: transparent;
-      -webkit-user-select: none;
-      user-select: none;
-      -webkit-transition: .2s;
-      transition: .2s;
-      vertical-align: middle;
-      box-shadow: inset 0 -.25em rgba(0,0,0,.3);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -webkit-appearance: none;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
   }
+  .jumbotron {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding: 1em;
+    color: #F0F0F0;
+    vertical-align: middle;
+    text-align: center;
+    position: absolute;
 
+    &__logo {
+      width: 25em;
+      margin-bottom: 1em;
+    }
+
+    h1 {
+      font-size: 5em;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: 3em;
+      font-family: 'Cookie', cursive;
+      text-shadow: 1px 1px #333;
+      letter-spacing: 2px;
+    }
+    &_buttons {
+      @include shift(9);
+      position: absolute;
+      bottom: 3%;
+      right: 3%;
+
+      &-item {
+        background-color: #dfdfdf;
+        border: none;
+        border-radius: .4em;
+        box-sizing: border-box;
+        color: #212;
+        cursor: pointer;
+        display: inline-block;
+        font-size: .95em;
+        font-weight: 700;
+        padding: .6em .8em .8em;
+        text-decoration: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-transition: .2s;
+        transition: .2s;
+        vertical-align: middle;
+        box-shadow: inset 0 -.25em rgba(0, 0, 0, .3);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-appearance: none;
+      }
+
+    }
   }
 }
 

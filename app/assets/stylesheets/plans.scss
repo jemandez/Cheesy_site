@@ -7,7 +7,7 @@
         padding-top: 33px;
         padding-bottom: 29px;
         text-transform: uppercase;
-        font-family: futura;
+        font-family: 'Roboto', sans-serif;
         letter-spacing: 0.2em;
     }
 
@@ -22,7 +22,7 @@
             height: 450px;
             padding-left: 49px;
             padding-right: 49px;
-            font-family: futura;
+            font-family: 'Roboto', sans-serif;
 
 
             @include media(min-width 320px max-width 480px) {
