@@ -143,7 +143,7 @@ class WebHooksController < ApplicationController
        begin
          match_student(dbx, group, Student)
        rescue Dropbox::ApiError
-         group.delete
+         group.destroy
        end
     end
 

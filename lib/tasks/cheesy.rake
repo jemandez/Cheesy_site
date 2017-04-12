@@ -7,7 +7,12 @@ namespace :cheesy do
   desc "Update students photos links"
   task update_photos: :environment do
      Student.all.each do |student|
+       begin
         update_photo(student, Dropbox::FileMetadata)
+       rescue
+         student.destroy
+       end
+
 
         student.save if student.url_changed?
      end
